@@ -1,0 +1,12 @@
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.deps.json
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.pdb
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.csproj.AssemblyReference.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.AssemblyInfoInputs.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.AssemblyInfo.cs
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.csproj.CoreCompileInputs.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\refint\ProjectManager.Identity.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.pdb
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ref\ProjectManager.Identity.dll
