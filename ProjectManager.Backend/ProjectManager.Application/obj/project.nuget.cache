@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "Mza6fcunuXTPTwjQStLwXyu07RzuUA2BbJus1TbMlg/cUK+fbuOViNqam/FB1xEeXUf1jm6UOa75+K+XVqTMqw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Application\\ProjectManager.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\mongodb.bson\\3.1.0\\mongodb.bson.3.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

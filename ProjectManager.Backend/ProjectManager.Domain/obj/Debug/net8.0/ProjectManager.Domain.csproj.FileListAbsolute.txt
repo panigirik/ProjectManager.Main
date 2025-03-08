@@ -1,0 +1,12 @@
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.deps.json
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.pdb
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.csproj.AssemblyReference.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.AssemblyInfoInputs.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.AssemblyInfo.cs
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\refint\ProjectManager.Domain.dll
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.pdb
+C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ref\ProjectManager.Domain.dll

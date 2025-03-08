@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "/NQuazZTjyxSB5Ol+xxPSiOa9ek6W5pqHfogtEd6nrttLRZzRR8lgAr8LLSNwHFq4WNZF4fRRaSjAiNHHR+oBA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\mongodb.bson\\3.1.0\\mongodb.bson.3.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\mongodb.driver\\3.1.0\\mongodb.driver.3.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": []
+}
