@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj": {}
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
+        "projectUniqueName": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
         "projectName": "ProjectManager.Domain",
-        "projectPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
+        "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
         "packagesPath": "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V",
-        "outputPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\obj\\",
+        "outputPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj": {
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj",
+        "projectUniqueName": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj",
         "projectName": "ProjectManager.Persistence",
-        "projectPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj",
+        "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj",
         "packagesPath": "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V",
-        "outputPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Persistence\\obj\\",
+        "outputPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -99,8 +99,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
-                "projectPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj"
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj"
               }
             }
           }
@@ -115,6 +115,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[9.0.0, )"

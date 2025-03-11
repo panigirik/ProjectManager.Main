@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ProjectManager.Domain.Interfaces;
 using ProjectManager.Persistence.Data;
 using ProjectManager.Persistence.Repositories;

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectManager.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+677d0a970739fd1263ad163338c5760da1b12293")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectManager.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectManager.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

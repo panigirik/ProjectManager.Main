@@ -10,3 +10,16 @@ C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Deb
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\refint\ProjectManager.Identity.dll
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.pdb
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Identity\obj\Debug\net8.0\ref\ProjectManager.Identity.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.deps.json
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\bin\Debug\net8.0\ProjectManager.Identity.pdb
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.csproj.AssemblyReference.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.AssemblyInfoInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.AssemblyInfo.cs
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.csproj.CoreCompileInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.sourcelink.json
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\refint\ProjectManager.Identity.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ProjectManager.Identity.pdb
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Identity\obj\Debug\net8.0\ref\ProjectManager.Identity.dll

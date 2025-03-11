@@ -7,25 +7,25 @@ namespace ProjectManager.Persistence.Repositories;
 
 public class UserRepository: IUserRepository
 {
-    private readonly IMongoCollection<User> _users;
+    private readonly UserDbContext _userDbContext;
 
     public UserRepository(UserDbContext context)
     {
-        _users = context.Users;
+        _userDbContext = context;
     }
 
     public async Task<IEnumerable<User>> GetAllAsync() =>
-        await _users.Find(_ => true).ToListAsync();
+        await _userDbContext.Users.Find(_ => true).ToListAsync();
 
     public async Task<User> GetByIdAsync(string id) =>
-        await _users.Find(u => u.UserId == id).FirstOrDefaultAsync();
+        await _userDbContext.Users.Find(u => u.UserId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(User user) =>
-        await _users.InsertOneAsync(user);
+        await _userDbContext.Users.InsertOneAsync(user);
 
     public async Task UpdateAsync(User user) =>
-        await _users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
+        await _userDbContext.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
 
     public async Task DeleteAsync(string id) =>
-        await _users.DeleteOneAsync(u => u.UserId == id);
+        await _userDbContext.Users.DeleteOneAsync(u => u.UserId == id);
 }

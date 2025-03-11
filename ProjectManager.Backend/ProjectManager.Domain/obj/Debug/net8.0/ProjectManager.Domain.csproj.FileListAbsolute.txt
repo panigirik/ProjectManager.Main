@@ -10,3 +10,16 @@ C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\refint\ProjectManager.Domain.dll
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.pdb
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Domain\obj\Debug\net8.0\ref\ProjectManager.Domain.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.deps.json
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\bin\Debug\net8.0\ProjectManager.Domain.pdb
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.csproj.AssemblyReference.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.AssemblyInfoInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.AssemblyInfo.cs
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.csproj.CoreCompileInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.sourcelink.json
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\refint\ProjectManager.Domain.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ProjectManager.Domain.pdb
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Domain\obj\Debug\net8.0\ref\ProjectManager.Domain.dll

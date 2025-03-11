@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BEZjCAKihbzG7TqVYCPYmRLx36KUDBvHskH10NAWracdWWmSLmZ1oSzoD/8Mn3uFEwLdcCucqJx5pN28ST4TGQ==",
+  "dgSpecHash": "7nj+uvmwR+2Y4gJTs0RD+ChT7fhAEkqm+3x8M/wRchdeEFEypzc1lBQiy4khZ9rQKoYVJRWrDJavBOrrn+U37A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
+  "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.10\\microsoft.aspnetcore.authentication.jwtbearer.8.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",

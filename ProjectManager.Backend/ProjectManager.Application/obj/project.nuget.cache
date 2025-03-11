@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Mza6fcunuXTPTwjQStLwXyu07RzuUA2BbJus1TbMlg/cUK+fbuOViNqam/FB1xEeXUf1jm6UOa75+K+XVqTMqw==",
+  "dgSpecHash": "0A7PNBgDPYD4Xsx/Hb3RIr/BP3vw0OgvhU8c1OIYL3L2ea6JgTPs3JdfWglL4N5I0PkEjKFJuHq2VtbvZjWk0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Application\\ProjectManager.Application.csproj",
+  "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Application\\ProjectManager.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0\\microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",

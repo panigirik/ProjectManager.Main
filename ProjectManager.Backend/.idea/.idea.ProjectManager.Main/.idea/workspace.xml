@@ -9,7 +9,119 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905a2e1a-0865-42a0-902a-ec034d17fc16" name="Changes" comment="" />
+    <list default="true" id="905a2e1a-0865-42a0-902a-ec034d17fc16" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectManager.Main/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectManager.Main/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/bin/Debug/net8.0/ProjectManager.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ProjectManager.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ref/ProjectManager.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/ref/ProjectManager.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/refint/ProjectManager.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/Debug/net8.0/refint/ProjectManager.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/ProjectManager.Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/ProjectManager.Application.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Application/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/bin/Debug/net8.0/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/bin/Debug/net8.0/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/bin/Debug/net8.0/ProjectManager.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/bin/Debug/net8.0/ProjectManager.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ProjectManager.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ref/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/ref/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/refint/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/Debug/net8.0/refint/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/ProjectManager.Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/ProjectManager.Domain.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Domain/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/bin/Debug/net8.0/ProjectManager.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/bin/Debug/net8.0/ProjectManager.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/bin/Debug/net8.0/ProjectManager.Identity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/bin/Debug/net8.0/ProjectManager.Identity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ProjectManager.Identity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ref/ProjectManager.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/ref/ProjectManager.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/refint/ProjectManager.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/Debug/net8.0/refint/ProjectManager.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/ProjectManager.Identity.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/ProjectManager.Identity.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Identity/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Identity/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Identity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Identity.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Identity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Identity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Main.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Persistence.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/bin/Debug/net8.0/ProjectManager.Persistence.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ProjectManager.Main.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ref/ProjectManager.Main.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/ref/ProjectManager.Main.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/refint/ProjectManager.Main.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/Debug/net8.0/refint/ProjectManager.Main.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/ProjectManager.Main.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/ProjectManager.Main.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Main/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Main/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/Extensions/ServiceCollectionExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/Extensions/ServiceCollectionExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/ProjectManager.Persistence.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/ProjectManager.Persistence.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/bin/Debug/net8.0/ProjectManager.Persistence.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ProjectManager.Persistence.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ref/ProjectManager.Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/ref/ProjectManager.Persistence.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/refint/ProjectManager.Persistence.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/Debug/net8.0/refint/ProjectManager.Persistence.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/ProjectManager.Persistence.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/ProjectManager.Persistence.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManager.Persistence/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManager.Persistence/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,13 +130,16 @@
   <component name="DpaMonitoringSettings">
     <option name="autoShow" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/9d5a6a9aa463d6d10b0b0ba6d5982cc82f363dc3/src/libraries/Microsoft.Extensions.DependencyInjection.Abstractions/src/ServiceCollection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/9d5a6a9aa463d6d10b0b0ba6d5982cc82f363dc3/src/libraries/Microsoft.Extensions.DependencyInjection.Abstractions/src/ServiceDescriptor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2u2Wtt3t7sJgDFqUcAHDRofPl8s" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,6 +149,7 @@
   "keyToString": {
     ".NET Launch Settings Profile.ProjectManager.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,6 +226,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741447370035</updated>
       <workItem from="1741447372223" duration="12564000" />
+      <workItem from="1741465674328" duration="191000" />
     </task>
     <servers />
   </component>

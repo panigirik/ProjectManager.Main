@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\ProjectManager.Identity.csproj": {}
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\ProjectManager.Identity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\ProjectManager.Identity.csproj": {
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\ProjectManager.Identity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
+        "projectUniqueName": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
         "projectName": "ProjectManager.Identity",
-        "projectPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
+        "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\ProjectManager.Identity.csproj",
         "packagesPath": "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V",
-        "outputPath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Identity\\obj\\",
+        "outputPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Identity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

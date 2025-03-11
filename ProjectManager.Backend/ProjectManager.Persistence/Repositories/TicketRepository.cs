@@ -7,25 +7,25 @@ namespace ProjectManager.Persistence.Repositories;
 
 public class TicketRepository: ITicketRepository
 {
-    private readonly IMongoCollection<Ticket> _tickets;
+    private readonly TicketDbContext _ticketDbContext;
 
     public TicketRepository(TicketDbContext context)
     {
-        _tickets = context.Tickets;
+        _ticketDbContext = context;
     }
 
     public async Task<IEnumerable<Ticket>> GetAllAsync() =>
-        await _tickets.Find(_ => true).ToListAsync();
+        await _ticketDbContext.Tickets.Find(_ => true).ToListAsync();
 
     public async Task<Ticket> GetByIdAsync(string id) =>
-        await _tickets.Find(t => t.TicketId == id).FirstOrDefaultAsync();
+        await _ticketDbContext.Tickets.Find(t => t.TicketId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Ticket ticket) =>
-        await _tickets.InsertOneAsync(ticket);
+        await _ticketDbContext.Tickets.InsertOneAsync(ticket);
 
     public async Task UpdateAsync(Ticket ticket) =>
-        await _tickets.ReplaceOneAsync(t => t.TicketId == ticket.TicketId, ticket);
+        await _ticketDbContext.Tickets.ReplaceOneAsync(t => t.TicketId == ticket.TicketId, ticket);
 
     public async Task DeleteAsync(string id) =>
-        await _tickets.DeleteOneAsync(t => t.TicketId == id);
+        await _ticketDbContext.Tickets.DeleteOneAsync(t => t.TicketId == id);
 }

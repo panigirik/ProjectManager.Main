@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GMzM9Zsk5e/1edc7PAf/lkhwx3YXvtkSgIzzgf2FBRZjT7jgTr2xrSDcbhUPhI3TkUttMWn3KnodvjE+Zi1MDA==",
+  "dgSpecHash": "c3RM0IvJAM5YLVSOTLxDcp95Axf7YX5ff9VoNBRqNnvOqUt4gkCk+HYrI269CMeOpW4t+08fCjZOe48b7zwCMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\RiderProjects\\ProjectManager.Main\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
+  "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\mongodb.bson\\3.1.0\\mongodb.bson.3.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",

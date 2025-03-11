@@ -7,25 +7,25 @@ namespace ProjectManager.Persistence.Repositories;
 
 public class BoardRepository: IBoardRepository
 {
-    private readonly IMongoCollection<Board> _boards;
+    private readonly BoardDbContext _boardDbContext;
 
     public BoardRepository(BoardDbContext context)
     {
-        _boards = context.Boards;
+        _boardDbContext = context;
     }
 
     public async Task<IEnumerable<Board>> GetAllAsync() =>
-        await _boards.Find(_ => true).ToListAsync();
+        await _boardDbContext.Boards.Find(_ => true).ToListAsync();
 
     public async Task<Board> GetByIdAsync(string id) =>
-        await _boards.Find(b => b.BoardId == id).FirstOrDefaultAsync();
+        await _boardDbContext.Boards.Find(b => b.BoardId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Board board) =>
-        await _boards.InsertOneAsync(board);
+        await _boardDbContext.Boards.InsertOneAsync(board);
 
     public async Task UpdateAsync(Board board) =>
-        await _boards.ReplaceOneAsync(b => b.BoardId == board.BoardId, board);
+        await _boardDbContext.Boards.ReplaceOneAsync(b => b.BoardId == board.BoardId, board);
 
     public async Task DeleteAsync(string id) =>
-        await _boards.DeleteOneAsync(b => b.BoardId == id);
+        await _boardDbContext.Boards.DeleteOneAsync(b => b.BoardId == id);
 }
