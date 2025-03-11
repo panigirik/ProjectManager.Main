@@ -1,5 +1,4 @@
 ﻿using ProjectManager.Application.DTOs;
-using ProjectManager.Domain.Entities;
 
 namespace ProjectManager.Application.Interfaces;
 
