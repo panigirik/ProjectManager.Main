@@ -25,6 +25,13 @@ public class UserRepository: IUserRepository
 
     public async Task UpdateAsync(User user) =>
         await _userDbContext.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
+    
+    public async Task<bool> ExistsAsync(string userName, string email)
+    {
+        return await _userDbContext.Users
+            .Find(u => u.UserName == userName || u.Email == email)
+            .AnyAsync();
+    }
 
     public async Task DeleteAsync(Guid id) =>
         await _userDbContext.Users.DeleteOneAsync(u => u.UserId == id);

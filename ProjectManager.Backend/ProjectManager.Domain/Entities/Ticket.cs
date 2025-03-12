@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -20,7 +21,7 @@ public class Ticket
     
     public string Description { get; set; }
     
-    public string AssignedUserName { get; set; } // ID пользователя-исполнителя
+    public string AssignedUserName { get; set; } 
     
-    public List<Guid>? AttachmentIds { get; set; } = new();
+    public IFormFile[]? Attachments { get; set; } 
 }

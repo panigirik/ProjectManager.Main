@@ -80,6 +80,7 @@
       <ProjectReference Include="..\ProjectManager.Application\ProjectManager.Application.csproj" />
       <ProjectReference Include="..\ProjectManager.Identity\ProjectManager.Identity.csproj" />
       <ProjectReference Include="..\ProjectManager.Persistence\ProjectManager.Persistence.csproj" />
+      <ProjectReference Include="..\ProjectManager.ValidationServices\ProjectManager.ValidationServices.csproj" />
     </ItemGroup>
 
     <ItemGroup>

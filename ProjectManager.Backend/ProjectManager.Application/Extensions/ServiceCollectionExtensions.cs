@@ -19,12 +19,9 @@ namespace ProjectManager.Application.Extensions;
         {
             services.AddAutoMapper(typeof(UserMappingProfile));
             services.AddAutoMapper(typeof(TicketMappingProfile));
-            services.AddAutoMapper(typeof(AttachmentMappingProfile));
             services.AddAutoMapper(typeof(BoardMappingProfile));
             services.AddAutoMapper(typeof(ColumnMappingProfile));
 
-            //services.AddScoped<IUserService, UserService>(); сервисы
-            services.AddScoped<IAttachmentService, AttachmentService>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddScoped<IColumnService, ColumnService>();
             services.AddScoped<ITicketService, TicketService>();

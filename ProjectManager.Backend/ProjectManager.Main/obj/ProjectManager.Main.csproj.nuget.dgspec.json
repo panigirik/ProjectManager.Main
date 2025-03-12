@@ -53,6 +53,18 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "CryptSharp": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -123,9 +135,87 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj",
+        "projectName": "ProjectManager.ExternalServices",
+        "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj",
+        "packagesPath": "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V",
+        "outputPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "nClam": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -259,6 +349,9 @@
               },
               "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj": {
                 "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Persistence\\ProjectManager.Persistence.csproj"
+              },
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\ProjectManager.ValidationServices.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\ProjectManager.ValidationServices.csproj"
               }
             }
           }
@@ -361,6 +454,91 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\ProjectManager.ValidationServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\ProjectManager.ValidationServices.csproj",
+        "projectName": "ProjectManager.ValidationServices",
+        "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\ProjectManager.ValidationServices.csproj",
+        "packagesPath": "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V",
+        "outputPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ValidationServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Application\\ProjectManager.Application.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Application\\ProjectManager.Application.csproj"
+              },
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "SixLabors.ImageSharp": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "nClam": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [

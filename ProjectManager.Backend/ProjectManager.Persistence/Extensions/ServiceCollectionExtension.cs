@@ -9,7 +9,6 @@ public static class ServiceCollectionExtension
 {
     public static void AddInfrastructureRepositoriesServices(this IServiceCollection services)
     {
-        services.AddSingleton<AttachmentDbContext>();
         services.AddSingleton<UserDbContext>();
         services.AddSingleton<BoardDbContext>();
         services.AddSingleton<ColumnDbContext>();
@@ -19,7 +18,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IBoardRepository, BoardRepository>();
         services.AddScoped<IColumnRepository, ColumnRepository>();
-        services.AddScoped<IAttachmentRepository, AttachmentRepository>();
         services.AddScoped<ITicketRepository, TicketRepository>();
 
     }

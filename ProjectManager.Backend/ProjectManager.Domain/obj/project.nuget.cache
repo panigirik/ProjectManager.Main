@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "c3RM0IvJAM5YLVSOTLxDcp95Axf7YX5ff9VoNBRqNnvOqUt4gkCk+HYrI269CMeOpW4t+08fCjZOe48b7zwCMw==",
+  "dgSpecHash": "TZt/AFJSyJ41b760nFDh1ZGtstbnEnPTdlMFp6PCsYFFWQWTwttu1QAVvlgx45qQivQrUroOf7tgEGwGvkQQyA==",
   "success": true,
   "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.aspnetcore.http.features\\5.0.12\\microsoft.aspnetcore.http.features.5.0.12.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\mongodb.bson\\3.1.0\\mongodb.bson.3.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
