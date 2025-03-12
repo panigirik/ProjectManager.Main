@@ -27,7 +27,7 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<IEnumerable<AttachmentDto>>(attachments);
         }
 
-        public async Task<AttachmentDto> GetByIdAsync(string id)
+        public async Task<AttachmentDto> GetByIdAsync(Guid id)
         {
             // Получаем attachment по id
             var attachment = await _attachmentRepository.GetByIdAsync(id);
@@ -54,7 +54,7 @@ namespace ProjectManager.Application.Services
             await _attachmentRepository.UpdateAsync(attachment);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             // Удаляем attachment через репозиторий
             await _attachmentRepository.DeleteAsync(id);

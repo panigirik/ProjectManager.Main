@@ -5,8 +5,8 @@ namespace ProjectManager.Domain.Interfaces;
 public interface ITicketRepository
 {
     Task<IEnumerable<Ticket>> GetAllAsync();
-    Task<Ticket> GetByIdAsync(string id);
+    Task<Ticket> GetByIdAsync(Guid id);
     Task CreateAsync(Ticket ticket);
     Task UpdateAsync(Ticket ticket);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }

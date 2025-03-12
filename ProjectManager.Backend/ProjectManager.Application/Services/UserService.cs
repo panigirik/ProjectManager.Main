@@ -27,7 +27,7 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<IEnumerable<UserDto>>(users);
         }
 
-        public async Task<UserDto> GetByIdAsync(string id)
+        public async Task<UserDto> GetByIdAsync(Guid id)
         {
             // Получаем user по id
             var user = await _userRepository.GetByIdAsync(id);
@@ -54,7 +54,7 @@ namespace ProjectManager.Application.Services
             await _userRepository.UpdateAsync(user);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             // Удаляем user через репозиторий
             await _userRepository.DeleteAsync(id);

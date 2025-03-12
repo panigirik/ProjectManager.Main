@@ -27,7 +27,7 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<IEnumerable<TicketDto>>(tickets);
         }
 
-        public async Task<TicketDto> GetByIdAsync(string id)
+        public async Task<TicketDto> GetByIdAsync(Guid id)
         {
             // Получаем ticket по id
             var ticket = await _ticketRepository.GetByIdAsync(id);
@@ -54,7 +54,7 @@ namespace ProjectManager.Application.Services
             await _ticketRepository.UpdateAsync(ticket);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             // Удаляем ticket через репозиторий
             await _ticketRepository.DeleteAsync(id);

@@ -17,7 +17,7 @@ public class TicketRepository: ITicketRepository
     public async Task<IEnumerable<Ticket>> GetAllAsync() =>
         await _ticketDbContext.Tickets.Find(_ => true).ToListAsync();
 
-    public async Task<Ticket> GetByIdAsync(string id) =>
+    public async Task<Ticket> GetByIdAsync(Guid id) =>
         await _ticketDbContext.Tickets.Find(t => t.TicketId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Ticket ticket) =>
@@ -26,6 +26,6 @@ public class TicketRepository: ITicketRepository
     public async Task UpdateAsync(Ticket ticket) =>
         await _ticketDbContext.Tickets.ReplaceOneAsync(t => t.TicketId == ticket.TicketId, ticket);
 
-    public async Task DeleteAsync(string id) =>
+    public async Task DeleteAsync(Guid id) =>
         await _ticketDbContext.Tickets.DeleteOneAsync(t => t.TicketId == id);
 }

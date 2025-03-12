@@ -4,9 +4,9 @@ namespace ProjectManager.Domain.Entities;
 
 public class TicketTransitionRule
 {
-    public string TicketTransitionRuleId { get; set; } = ObjectId.GenerateNewId().ToString();
-    public string BoardId { get; set; }
-    public string FromColumnId { get; set; }
-    public string ToColumnId { get; set; }
+    public Guid TicketTransitionRuleId { get; set; }
+    public Guid BoardId { get; set; }
+    public Guid FromColumnId { get; set; }
+    public Guid ToColumnId { get; set; }
     public bool IsAllowed { get; set; } // true - разрешено, false - запрещено
 }

@@ -6,8 +6,8 @@ namespace ProjectManager.Application.Interfaces;
 public interface IBoardService
 {
     Task<IEnumerable<BoardDto>> GetAllAsync();
-    Task<BoardDto> GetByIdAsync(string id);
+    Task<BoardDto> GetByIdAsync(Guid id);
     Task CreateAsync(BoardDto boardDto);
     Task UpdateAsync(BoardDto boardDto);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }

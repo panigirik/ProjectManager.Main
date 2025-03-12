@@ -6,8 +6,8 @@ namespace ProjectManager.Application.Interfaces;
 public interface ITicketService
 {
     Task<IEnumerable<TicketDto>> GetAllAsync();
-    Task<TicketDto> GetByIdAsync(string id);
+    Task<TicketDto> GetByIdAsync(Guid id);
     Task CreateAsync(TicketDto ticketDto);
     Task UpdateAsync(TicketDto ticketDto);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }

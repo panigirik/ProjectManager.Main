@@ -6,8 +6,8 @@ namespace ProjectManager.Application.Interfaces;
 public interface IUserService
 {
     Task<IEnumerable<UserDto>> GetAllAsync();
-    Task<UserDto> GetByIdAsync(string id);
+    Task<UserDto> GetByIdAsync(Guid id);
     Task CreateAsync(UserDto userDto);
     Task UpdateAsync(UserDto userDto);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }

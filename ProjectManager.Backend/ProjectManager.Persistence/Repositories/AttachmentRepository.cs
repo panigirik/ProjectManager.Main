@@ -17,7 +17,7 @@ public class AttachmentRepository: IAttachmentRepository
         public async Task<IEnumerable<Attachment>> GetAllAsync() =>
             await _attachmentDbContext.Attachments.Find(_ => true).ToListAsync();
 
-        public async Task<Attachment> GetByIdAsync(string id) =>
+        public async Task<Attachment> GetByIdAsync(Guid id) =>
             await _attachmentDbContext.Attachments.Find(a => a.AttachmentId == id).FirstOrDefaultAsync();
 
         public async Task CreateAsync(Attachment attachment) =>
@@ -26,7 +26,7 @@ public class AttachmentRepository: IAttachmentRepository
         public async Task UpdateAsync(Attachment attachment) =>
             await _attachmentDbContext.Attachments.ReplaceOneAsync(a => a.AttachmentId == attachment.AttachmentId, attachment);
 
-        public async Task DeleteAsync(string id) =>
+        public async Task DeleteAsync(Guid id) =>
             await _attachmentDbContext.Attachments.DeleteOneAsync(a => a.AttachmentId == id);
     
 }

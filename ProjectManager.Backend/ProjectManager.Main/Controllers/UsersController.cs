@@ -25,7 +25,7 @@ public class UsersController : ControllerBase
 
     // GET: api/users/{id}
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(string id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var user = await _userService.GetByIdAsync(id);
         if (user == null)
@@ -63,7 +63,7 @@ public class UsersController : ControllerBase
 
     // DELETE: api/users/{id}
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         await _userService.DeleteAsync(id);
         return NoContent();

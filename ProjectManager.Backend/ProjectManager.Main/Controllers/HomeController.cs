@@ -9,7 +9,7 @@ namespace ProjectManager.Main.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 
-public class HealthChecker : Controller
+public class HealthChecker : ControllerBase
 {
     [HttpGet("health")]
     public IActionResult HealthCheck()

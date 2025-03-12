@@ -1,12 +1,22 @@
-﻿using MongoDB.Bson;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjectManager.Domain.Entities;
 
 public class Attachment
 {
-    public string AttachmentId { get; set; } = ObjectId.GenerateNewId().ToString();
+    /// <summary>
+    /// Уникальный идентификатор документа.
+    /// </summary>
+    [BsonId]
+    [NotMapped]
+    public ObjectId Id { get; set; } 
     
-    public string TicketId { get; set; } 
+    [BsonRepresentation(BsonType.String)]
+    public Guid AttachmentId { get; set; }
+    
+    public Guid TicketId { get; set; } 
     
     public string FileName { get; set; }
     

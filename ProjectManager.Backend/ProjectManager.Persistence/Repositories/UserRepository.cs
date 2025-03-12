@@ -17,7 +17,7 @@ public class UserRepository: IUserRepository
     public async Task<IEnumerable<User>> GetAllAsync() =>
         await _userDbContext.Users.Find(_ => true).ToListAsync();
 
-    public async Task<User> GetByIdAsync(string id) =>
+    public async Task<User> GetByIdAsync(Guid id) =>
         await _userDbContext.Users.Find(u => u.UserId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(User user) =>
@@ -26,6 +26,6 @@ public class UserRepository: IUserRepository
     public async Task UpdateAsync(User user) =>
         await _userDbContext.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
 
-    public async Task DeleteAsync(string id) =>
+    public async Task DeleteAsync(Guid id) =>
         await _userDbContext.Users.DeleteOneAsync(u => u.UserId == id);
 }

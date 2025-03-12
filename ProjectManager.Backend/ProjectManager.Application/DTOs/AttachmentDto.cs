@@ -4,9 +4,9 @@ namespace ProjectManager.Application.DTOs;
 
 public class AttachmentDto
 {
-    public string AttachmentId { get; set; } = ObjectId.GenerateNewId().ToString();
+    public Guid AttachmentId { get; set; } 
     
-    public string TicketId { get; set; } 
+    public Guid TicketId { get; set; } 
     
     public string FileName { get; set; }
     

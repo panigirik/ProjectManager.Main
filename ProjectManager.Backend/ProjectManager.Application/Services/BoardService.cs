@@ -24,7 +24,7 @@ public class BoardService : IBoardService
         return _mapper.Map<IEnumerable<BoardDto>>(boards);
     }
 
-    public async Task<BoardDto> GetByIdAsync(string id)
+    public async Task<BoardDto> GetByIdAsync(Guid id)
     {
         var board = await _boardRepository.GetByIdAsync(id);
         return _mapper.Map<BoardDto>(board);
@@ -43,7 +43,7 @@ public class BoardService : IBoardService
         await _boardRepository.UpdateAsync(updatedBoard);
     }
 
-    public async Task DeleteAsync(string id)
+    public async Task DeleteAsync(Guid id)
     {
         await _boardRepository.DeleteAsync(id);
     }

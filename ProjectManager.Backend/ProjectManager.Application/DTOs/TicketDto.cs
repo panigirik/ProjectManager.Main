@@ -4,9 +4,9 @@ namespace ProjectManager.Application.DTOs;
 
 public class TicketDto
 {
-    public string TicketId { get; set; } = ObjectId.GenerateNewId().ToString();
+    public Guid TicketId { get; set; } 
     public string Title { get; set; }
     public string Description { get; set; }
-    public string AssignedUserId { get; set; } // ID пользователя-исполнителя
-    public List<string> AttachmentIds { get; set; } = new();
+    public Guid AssignedUserId { get; set; } // ID пользователя-исполнителя
+    public List<Guid> AttachmentIds { get; set; } = new();
 }

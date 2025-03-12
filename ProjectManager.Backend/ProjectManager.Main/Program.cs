@@ -29,8 +29,9 @@ namespace ProjectManager.Main
                 });
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseHttpsRedirection();
+            //app.UseStaticFiles();
+            app.MapControllers();
             app.UseRouting();
             app.UseAuthorization();
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
+using ProjectManager.Domain.Entities;
 
 namespace ProjectManager.Main.Controllers;
 
@@ -16,7 +17,7 @@ public class AttachmentsController : ControllerBase
     }
 
     // GET: api/attachments
-    [HttpGet]
+    [HttpGet("attachments")]
     public async Task<IActionResult> GetAll()
     {
         var attachments = await _attachmentService.GetAllAsync();
@@ -25,7 +26,7 @@ public class AttachmentsController : ControllerBase
 
     // GET: api/attachments/{id}
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(string id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var attachment = await _attachmentService.GetByIdAsync(id);
         if (attachment == null)
@@ -63,7 +64,7 @@ public class AttachmentsController : ControllerBase
 
     // DELETE: api/attachments/{id}
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         await _attachmentService.DeleteAsync(id);
         return NoContent();

@@ -25,7 +25,7 @@ public class BoardsController : ControllerBase
 
     // GET: api/boards/{id}
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(string id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var board = await _boardService.GetByIdAsync(id);
         if (board == null)
@@ -63,7 +63,7 @@ public class BoardsController : ControllerBase
 
     // DELETE: api/boards/{id}
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         await _boardService.DeleteAsync(id);
         return NoContent();

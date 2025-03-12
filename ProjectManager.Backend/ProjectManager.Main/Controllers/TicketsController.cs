@@ -25,7 +25,7 @@ public class TicketsController : ControllerBase
 
     // GET: api/tickets/{id}
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(string id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var ticket = await _ticketService.GetByIdAsync(id);
         if (ticket == null)
@@ -63,7 +63,7 @@ public class TicketsController : ControllerBase
 
     // DELETE: api/tickets/{id}
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         await _ticketService.DeleteAsync(id);
         return NoContent();

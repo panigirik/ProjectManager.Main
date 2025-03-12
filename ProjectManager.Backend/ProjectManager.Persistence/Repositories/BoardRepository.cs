@@ -17,7 +17,7 @@ public class BoardRepository: IBoardRepository
     public async Task<IEnumerable<Board>> GetAllAsync() =>
         await _boardDbContext.Boards.Find(_ => true).ToListAsync();
 
-    public async Task<Board> GetByIdAsync(string id) =>
+    public async Task<Board> GetByIdAsync(Guid id) =>
         await _boardDbContext.Boards.Find(b => b.BoardId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Board board) =>
@@ -26,6 +26,6 @@ public class BoardRepository: IBoardRepository
     public async Task UpdateAsync(Board board) =>
         await _boardDbContext.Boards.ReplaceOneAsync(b => b.BoardId == board.BoardId, board);
 
-    public async Task DeleteAsync(string id) =>
+    public async Task DeleteAsync(Guid id) =>
         await _boardDbContext.Boards.DeleteOneAsync(b => b.BoardId == id);
 }

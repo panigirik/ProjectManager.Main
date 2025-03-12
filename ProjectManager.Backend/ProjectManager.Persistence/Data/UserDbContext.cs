@@ -16,7 +16,7 @@ public class UserDbContext
             throw new ArgumentException("MongoDB connection string is missing or empty in configuration.");
         }
             
-        var databaseName = configuration["MongoDatabases:UserDatabase"];
+        var databaseName = configuration["MongoDatabases:UsersDatabase"];
         if (string.IsNullOrEmpty(databaseName))
         {
             throw new ArgumentException("MongoDB database name is missing or empty in configuration.");

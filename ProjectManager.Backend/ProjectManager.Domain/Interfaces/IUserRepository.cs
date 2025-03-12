@@ -5,8 +5,8 @@ namespace ProjectManager.Domain.Interfaces;
 public interface IUserRepository
 {
     Task<IEnumerable<User>> GetAllAsync();
-    Task<User> GetByIdAsync(string id);
+    Task<User> GetByIdAsync(Guid id);
     Task CreateAsync(User user);
     Task UpdateAsync(User user);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }
