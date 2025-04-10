@@ -35,6 +35,9 @@
             "projectReferences": {
               "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
                 "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj"
+              },
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.ExternalServices\\ProjectManager.ExternalServices.csproj"
               }
             }
           }
@@ -192,7 +195,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj": {
+                "projectPath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Domain\\ProjectManager.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -205,6 +212,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Dropbox.Api": {
+              "target": "Package",
+              "version": "[6.32.0, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.12, )"

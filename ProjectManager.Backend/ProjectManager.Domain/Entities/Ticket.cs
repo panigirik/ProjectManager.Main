@@ -15,7 +15,7 @@ public class Ticket
     public ObjectId Id { get; set; } 
     
     [BsonRepresentation(BsonType.String)]
-    public Guid TicketId { get; set; } 
+    public Guid TicketId { get; set; } = Guid.NewGuid(); 
     
     public string Title { get; set; }
     
@@ -23,5 +23,8 @@ public class Ticket
     
     public string AssignedUserName { get; set; } 
     
-    public IFormFile[]? Attachments { get; set; } 
+    [BsonRepresentation(BsonType.String)]
+    public Guid ColumnId { get; set; } 
+    
+    public string[]? Attachments { get; set; } 
 }

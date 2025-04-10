@@ -11,8 +11,12 @@ public class UserMappingProfile: Profile
     /// </summary>
     public UserMappingProfile()
     {
-        CreateMap<User, UserDto>();
+        CreateMap<User, UserDto>()
+            .ForMember(dest => dest.UserId,
+                opt => opt.Ignore());
 
-        CreateMap<UserDto, User>();
+        CreateMap<UserDto, User>()
+            .ForMember(dest => dest.UserId,
+                opt => opt.Ignore());
     }
 }

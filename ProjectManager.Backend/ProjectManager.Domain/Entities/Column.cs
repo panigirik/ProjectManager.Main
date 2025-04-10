@@ -14,7 +14,12 @@ public class Column
     public ObjectId Id { get; set; } 
     
     [BsonRepresentation(BsonType.String)]
-    public string ColumnId { get; set; } 
+    public Guid ColumnId { get; set; } 
     public string ColumnName { get; set; }
-    public List<Ticket> Tickets { get; set; } = new();
+    
+    [BsonRepresentation(BsonType.String)]
+    public Guid BoardId { get; set; } 
+    
+    [BsonRepresentation(BsonType.String)]
+    public List<Guid> TicketIds { get; set; } = new(); // Храним ссылки на тикеты
 }

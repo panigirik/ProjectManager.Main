@@ -14,17 +14,15 @@ public class BoardsController : ControllerBase
     {
         _boardService = boardService;
     }
-
-    // GET: api/boards
-    [HttpGet]
+    
+    [HttpGet("column")]
     public async Task<IActionResult> GetAll()
     {
         var boards = await _boardService.GetAllAsync();
         return Ok(boards);
     }
-
-    // GET: api/boards/{id}
-    [HttpGet("{id}")]
+    
+    [HttpGet("column/{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
         var board = await _boardService.GetByIdAsync(id);
@@ -34,9 +32,8 @@ public class BoardsController : ControllerBase
         }
         return Ok(board);
     }
-
-    // POST: api/boards
-    [HttpPost]
+    
+    [HttpPost("column")]
     public async Task<IActionResult> Create([FromBody] BoardDto boardDto)
     {
         if (boardDto == null)
@@ -47,9 +44,8 @@ public class BoardsController : ControllerBase
         await _boardService.CreateAsync(boardDto);
         return CreatedAtAction(nameof(GetById), new { id = boardDto.BoardId }, boardDto);
     }
-
-    // PUT: api/boards
-    [HttpPut]
+    
+    [HttpPut("column")]
     public async Task<IActionResult> Update([FromBody] BoardDto boardDto)
     {
         if (boardDto == null)
@@ -60,9 +56,8 @@ public class BoardsController : ControllerBase
         await _boardService.UpdateAsync(boardDto);
         return NoContent();
     }
-
-    // DELETE: api/boards/{id}
-    [HttpDelete("{id}")]
+    
+    [HttpDelete("column/{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
         await _boardService.DeleteAsync(id);

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Text;
+using AutoMapper;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Domain.Entities;
@@ -13,12 +14,15 @@ namespace ProjectManager.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly BlowfishEncryptionHelper _encryptionHelper;
+        private readonly string _encryptionKey;
+        
 
         public UserService(IUserRepository userRepository, IMapper mapper, IConfiguration configuration)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _encryptionHelper = new BlowfishEncryptionHelper(configuration);
+            _encryptionKey = configuration["EncryptionKey"];
         }
 
         public async Task<IEnumerable<UserDto>> GetAllAsync()
@@ -50,25 +54,22 @@ namespace ProjectManager.Application.Services
             await _userRepository.DeleteAsync(id);
         }
 
-        // Регистрация пользователя с шифрованием пароля
         public async Task<bool> RegisterUserAsync(RegisterDto registerDto)
         {
-            // Проверяем, существует ли пользователь с таким именем или email
             if (await _userRepository.ExistsAsync(registerDto.UserName, registerDto.Email))
             {
-                return false;  // Пользователь с таким именем или email уже существует
+                return false; 
             }
 
-            // Генерация соли и шифрование пароля с помощью Blowfish
             string salt = _encryptionHelper.GenerateSalt();
-            byte[] key = Convert.FromBase64String("simple_secret_key_1234"); // Используем секретный ключ из конфигурации или другого места
-            var encryptedPassword = _encryptionHelper.Crypt(key, salt);
+            string encryptedPassword = _encryptionHelper.Crypt(Encoding.UTF8.GetBytes(_encryptionKey), salt);
 
             var user = new User
             {
+                UserId = Guid.NewGuid(),
                 UserName = registerDto.UserName,
                 Email = registerDto.Email,
-                Password = encryptedPassword,  // Шифрованный пароль
+                Password = encryptedPassword,
                 Role = "User"
             };
 

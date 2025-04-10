@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectManager.Application.Interfaces.ExternalServices;
 using ProjectManager.Application.Interfaces.ValidationInterfaces;
 using ProjectManager.Application.ValidationInterfaces;
 using ProjectManager.ExternalServices.Services.ClamAV.Helpers;
+using ProjectManager.ExternalServices.Services.CloudStorageServices;
 using ProjectManager.ValidationServices.Services;
 using ProjectManager.ValidationServices.ValidateRules;
 
@@ -18,5 +20,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IFileValidationService, FileValidationService>();
         
         services.AddScoped<ScanFileForMalwareHelper>();
-    }
+
+        }
 }

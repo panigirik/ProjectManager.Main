@@ -8,5 +8,5 @@ public class TicketTransitionRule
     public Guid BoardId { get; set; }
     public Guid FromColumnId { get; set; }
     public Guid ToColumnId { get; set; }
-    public bool IsAllowed { get; set; } // true - разрешено, false - запрещено
+    public bool IsAllowed { get; set; } 
 }

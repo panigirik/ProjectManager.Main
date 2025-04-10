@@ -17,9 +17,6 @@ namespace ProjectManager.ValidationServices.Services
         private readonly string[] _forbiddenFormats;
         private readonly ScanFileForMalwareHelper _malwareHelper;
 
-        /// <summary>
-        /// Конструктор сервиса, загружает настройки валидации из конфигурации.
-        /// </summary>
         public FileValidationService(IValidator<IFormFile> fileValidator,
             IConfiguration configuration,
             ScanFileForMalwareHelper malwareHelper)
@@ -32,29 +29,23 @@ namespace ProjectManager.ValidationServices.Services
             _malwareHelper = malwareHelper;
         }
 
-        /// <summary>
-        /// Проверяет загружаемый аватар на соответствие требованиям.
-        /// </summary>
-        /// <param name="file">Файл изображения для проверки.</param>
-        public async Task ValidateFileAsync(IFormFile file)
+        public async Task ValidateFilesAsync(IFormFile[] files)
         {
-            var validationResult = await _fileValidator.ValidateAsync(file);
-            if (!validationResult.IsValid)
+            foreach (var file in files)
             {
-                throw new ValidationException(validationResult.Errors.ToString());
+                var validationResult = await _fileValidator.ValidateAsync(file);
+                if (!validationResult.IsValid)
+                {
+                    throw new ValidationException(validationResult.Errors.ToString());
+                }
+                ValidateFileFormat(file);
+                ValidateFileSize(file);
+                await ValidateImageResolutionAsync(file);
+                await _malwareHelper.TestConnectionAsync();
+                await _malwareHelper.ScanFileAsync(file);
             }
-
-            ValidateFileFormat(file);
-            ValidateFileSize(file);
-            await ValidateImageResolutionAsync(file);
-            await _malwareHelper.TestConnectionAsync();
-            await _malwareHelper.ScanFileAsync(file);
-
         }
 
-        /// <summary>
-        /// Проверяет формат загружаемого файла.
-        /// </summary>
         private void ValidateFileFormat(IFormFile file)
         {
             string extension = Path.GetExtension(file.FileName).ToLower();
@@ -68,9 +59,6 @@ namespace ProjectManager.ValidationServices.Services
             }
         }
 
-        /// <summary>
-        /// Проверяет размер загружаемого файла.
-        /// </summary>
         private void ValidateFileSize(IFormFile file)
         {
             if (file.Length > _maxFileSizeMb * 1024 * 1024)
@@ -79,13 +67,10 @@ namespace ProjectManager.ValidationServices.Services
             }
         }
 
-        /// <summary>
-        /// Проверяет разрешение изображения.
-        /// </summary>
         private async Task ValidateImageResolutionAsync(IFormFile file)
         {
             using var stream = file.OpenReadStream();
-            var image = await Image.LoadAsync(stream); 
+            var image = await Image.LoadAsync(stream);
             if (image.Width > _maxResolution || image.Height > _maxResolution)
             {
                 throw new ValidationException($"Resolution is bigger than {_maxResolution}x{_maxResolution}");

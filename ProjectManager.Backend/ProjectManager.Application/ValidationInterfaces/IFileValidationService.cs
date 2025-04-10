@@ -8,5 +8,5 @@ public interface IFileValidationService
     /// Проверяет загружаемый аватар на соответствие требованиям.
     /// </summary>
     /// <param name="file">Файл изображения для проверки.</param>
-    Task ValidateFileAsync(IFormFile file);
+    Task ValidateFilesAsync(IFormFile[] files);
 }

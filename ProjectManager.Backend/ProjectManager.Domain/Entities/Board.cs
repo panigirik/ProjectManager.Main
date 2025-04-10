@@ -18,7 +18,6 @@ public class Board
 
     public string BoardName { get; set; }
     
-    public List<Guid> UserIds { get; set; } = new();
-    
-    public List<Column> Columns { get; set; } = new();
+    [BsonRepresentation(BsonType.String)]
+    public List<Guid> ColumnIds { get; set; } = new();
 }

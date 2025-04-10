@@ -28,9 +28,12 @@ namespace ProjectManager.Application.Encryption
 
             byte[] salt = new byte[16];
             new Random().NextBytes(salt);
-            char[] saltBase64 = UnixBase64.Encode(salt);
-            return string.Format("$2a${0}${1}{2}", cost.ToString("00"), saltBase64, saltBase64);
+
+            string saltBase64 = new string(UnixBase64.Encode(salt));
+    
+            return string.Format("$2a${0}${1}", cost.ToString("00"), saltBase64);
         }
+
 
         public override string Crypt(byte[] key, string salt)
         {
@@ -39,9 +42,10 @@ namespace ProjectManager.Application.Encryption
             if (string.IsNullOrEmpty(salt))
                 throw new ArgumentException("Salt cannot be null or empty.", nameof(salt));
 
-            Match match = Regex.Match(salt, @"^\$2a\$(\d{2})\$(.{22})(.{31})$");
+            Match match = Regex.Match(salt, @"^\$2a\$(\d{2})\$(.{22})$");
             if (!match.Success)
                 throw new ArgumentException("Invalid salt format.", nameof(salt));
+
 
             int cost = int.Parse(match.Groups[1].Value);
             if (cost < 4 || cost > 31)

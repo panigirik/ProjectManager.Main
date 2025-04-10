@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Application.DTOs;
-using ProjectManager.Domain.Entities;
 using ProjectManager.Application.Interfaces;
-using System.Threading.Tasks;
 
 namespace ProjectManager.Main.Controllers
 {

@@ -14,17 +14,29 @@ public class UserRepository: IUserRepository
         _userDbContext = context;
     }
 
-    public async Task<IEnumerable<User>> GetAllAsync() =>
-        await _userDbContext.Users.Find(_ => true).ToListAsync();
+    public async Task<IEnumerable<User>> GetAllAsync()
+    {
+        return await _userDbContext.Users.Find(_ => true).ToListAsync();
+    }
+        
 
-    public async Task<User> GetByIdAsync(Guid id) =>
-        await _userDbContext.Users.Find(u => u.UserId == id).FirstOrDefaultAsync();
+    public async Task<User> GetByIdAsync(Guid id)
+    {
+       return await _userDbContext.Users.Find(u => u.UserId == id).FirstOrDefaultAsync();
+    }
 
-    public async Task CreateAsync(User user) =>
+
+    public async Task CreateAsync(User user)
+    { 
         await _userDbContext.Users.InsertOneAsync(user);
+    }
 
-    public async Task UpdateAsync(User user) =>
+
+    public async Task UpdateAsync(User user)
+    {
         await _userDbContext.Users.ReplaceOneAsync(u => u.UserId == user.UserId, user);
+    }
+        
     
     public async Task<bool> ExistsAsync(string userName, string email)
     {
@@ -33,6 +45,9 @@ public class UserRepository: IUserRepository
             .AnyAsync();
     }
 
-    public async Task DeleteAsync(Guid id) =>
+    public async Task DeleteAsync(Guid id)
+    {
         await _userDbContext.Users.DeleteOneAsync(u => u.UserId == id);
+    }
+        
 }

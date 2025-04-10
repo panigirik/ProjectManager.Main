@@ -7,9 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Dropbox.Api" Version="6.32.0" />
+      <PackageReference Include="FirebaseAdmin" Version="3.0.0" />
+      <PackageReference Include="FirebaseStorage.net" Version="1.0.2" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.12" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
       <PackageReference Include="nClam" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProjectManager.Domain\ProjectManager.Domain.csproj" />
     </ItemGroup>
 
 </Project>

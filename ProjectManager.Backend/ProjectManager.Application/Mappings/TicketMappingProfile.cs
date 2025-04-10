@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectManager.Application.DTOs;
+using ProjectManager.Application.RequestsDTOs;
 using ProjectManager.Domain.Entities;
 
 namespace ProjectManager.Application.Mappings;
@@ -14,5 +15,13 @@ public class TicketMappingProfile: Profile
         CreateMap<TicketDto, Ticket>();
 
         CreateMap<Ticket, TicketDto>();
+            //.ForMember(dest 
+               // => dest.Attachments, opt => opt.Ignore());
+
+        CreateMap<Ticket, GetTicketRequest>();
+
+        CreateMap<Ticket, CreateTicketDto>().ReverseMap();
+
+        CreateMap<Ticket, UpdateTicketDto>().ReverseMap();
     }
 }

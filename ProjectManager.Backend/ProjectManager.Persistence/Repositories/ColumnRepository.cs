@@ -17,7 +17,7 @@ public class ColumnRepository: IColumnRepository
     public async Task<IEnumerable<Column>> GetAllAsync() =>
         await _columnDbContext.Columns.Find(_ => true).ToListAsync();
 
-    public async Task<Column> GetByIdAsync(string id) =>
+    public async Task<Column> GetByIdAsync(Guid id) =>
         await _columnDbContext.Columns.Find(c => c.ColumnId == id).FirstOrDefaultAsync();
 
     public async Task CreateAsync(Column column) =>
@@ -26,6 +26,6 @@ public class ColumnRepository: IColumnRepository
     public async Task UpdateAsync(Column column) =>
         await _columnDbContext.Columns.ReplaceOneAsync(c => c.ColumnId == column.ColumnId, column);
 
-    public async Task DeleteAsync(string id) =>
+    public async Task DeleteAsync(Guid id) =>
         await _columnDbContext.Columns.DeleteOneAsync(c => c.ColumnId == id);
 }

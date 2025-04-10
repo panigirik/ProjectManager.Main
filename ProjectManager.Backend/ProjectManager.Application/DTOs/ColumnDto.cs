@@ -1,10 +1,17 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjectManager.Application.DTOs;
 
 public class ColumnDto
 {
+    [BsonRepresentation(BsonType.String)]
     public Guid ColumnId { get; set; } 
     public string ColumnName { get; set; }
-    public List<TicketDto> Tickets { get; set; } = new();
+    
+    [BsonRepresentation(BsonType.String)]
+    public Guid BoardId { get; set; } 
+    
+    [BsonRepresentation(BsonType.String)]
+    public List<Guid> TicketIds { get; set; } = new(); // Храним ссылки на тикеты
 }

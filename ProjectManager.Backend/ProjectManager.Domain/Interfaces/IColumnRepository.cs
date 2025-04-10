@@ -5,8 +5,8 @@ namespace ProjectManager.Domain.Interfaces;
 public interface IColumnRepository
 {
     Task<IEnumerable<Column>> GetAllAsync();
-    Task<Column> GetByIdAsync(string id);
+    Task<Column> GetByIdAsync(Guid id);
     Task CreateAsync(Column column);
     Task UpdateAsync(Column column);
-    Task DeleteAsync(string id);
+    Task DeleteAsync(Guid id);
 }

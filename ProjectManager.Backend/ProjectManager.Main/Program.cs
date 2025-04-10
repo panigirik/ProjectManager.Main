@@ -1,4 +1,5 @@
 using ProjectManager.Application.Extensions;
+using ProjectManager.ExternalServices.Extensions;
 using ProjectManager.Identity.Extensions;
 using ProjectManager.Persistence.Extensions;
 using ProjectManager.ValidationServices.Extensions;
@@ -15,6 +16,7 @@ namespace ProjectManager.Main
             builder.Services.AddInfrastructureIdentityServices(builder.Configuration);
             builder.Services.AddInfrastructureValidationServices();
             builder.Services.AddInfrastructureRepositoriesServices();
+            builder.Services.AddInfrastructureExternalServices();
             builder.Services.AddSwaggerAuthentication();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
