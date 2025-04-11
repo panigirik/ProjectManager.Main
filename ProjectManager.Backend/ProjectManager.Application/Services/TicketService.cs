@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Application.Interfaces.ExternalServices;
@@ -15,7 +14,6 @@ namespace ProjectManager.Application.Services
         private readonly IMapper _mapper;
         private readonly IDropBoxClient _dropBoxClient;
 
-        // Конструктор с внедрением IMapper
         public TicketService(ITicketRepository ticketRepository,
             IMapper mapper,
             IDropBoxClient dropBoxClient)

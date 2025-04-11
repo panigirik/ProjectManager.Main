@@ -1,6 +1,7 @@
 using ProjectManager.Application.Extensions;
 using ProjectManager.ExternalServices.Extensions;
 using ProjectManager.Identity.Extensions;
+using ProjectManager.Main.ExceptionsHandling;
 using ProjectManager.Persistence.Extensions;
 using ProjectManager.ValidationServices.Extensions;
 
@@ -36,6 +37,7 @@ namespace ProjectManager.Main
             //app.UseHttpsRedirection();
             //app.UseStaticFiles();
             app.MapControllers();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
             app.UseAuthorization();
 

@@ -34,19 +34,14 @@ public class UsersController : ControllerBase
     }
     
     [HttpPost("user")]
-    public async Task<IActionResult> Create([FromBody] UserDto userDto)
+    public async Task<IActionResult> Create([FromForm] UserDto userDto)
     {
-        if (userDto == null)
-        {
-            return BadRequest("User data is null.");
-        }
-
         await _userService.CreateAsync(userDto);
-        return CreatedAtAction(nameof(GetById), new { id = userDto.UserId }, userDto);
+        return NoContent();
     }
     
     [HttpPut("user")]
-    public async Task<IActionResult> Update([FromBody] UserDto userDto)
+    public async Task<IActionResult> Update([FromForm] UserDto userDto)
     {
         if (userDto == null)
         {

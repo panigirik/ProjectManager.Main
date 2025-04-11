@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KWAZzLpVE9NO8aCTz5PpoHclr+Pwof//vLbUiOQKIfoyCynI2qIuv8rR0j0WYKEy0bQ4W95gz6yIH73GLhmhqA==",
+  "dgSpecHash": "bJ3o0ElSfIT6YonUWbNBO1h5Wsj17NzXsoInPrHCWonhWMm82M+tAB5CNhzQ8cAg8wNCLzH9rYn4n92RTTYoHA==",
   "success": true,
   "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Main\\ProjectManager.Main.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\cryptsharp\\1.3.0\\cryptsharp.1.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\dropbox.api\\6.32.0\\dropbox.api.6.32.0.nupkg.sha512",

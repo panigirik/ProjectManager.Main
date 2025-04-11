@@ -6,6 +6,9 @@ using ProjectManager.Domain.Entities;
 using ProjectManager.Domain.Interfaces;
 using ProjectManager.Application.Encryption;
 using Microsoft.Extensions.Configuration;
+using ProjectManager.Application.Exceptions;
+using ProjectManager.Application.Interfaces.ValidationInterfaces;
+using ProjectManager.Domain.Enums;
 
 namespace ProjectManager.Application.Services
 {
@@ -15,11 +18,15 @@ namespace ProjectManager.Application.Services
         private readonly IMapper _mapper;
         private readonly BlowfishEncryptionHelper _encryptionHelper;
         private readonly string _encryptionKey;
-        
+        private readonly IAddUserValidationService _userValidationService;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, IConfiguration configuration)
+        public UserService(IUserRepository userRepository,
+            IMapper mapper,
+            IConfiguration configuration,
+            IAddUserValidationService userValidationService)
         {
             _userRepository = userRepository;
+            _userValidationService = userValidationService;
             _mapper = mapper;
             _encryptionHelper = new BlowfishEncryptionHelper(configuration);
             _encryptionKey = configuration["EncryptionKey"];
@@ -39,7 +46,14 @@ namespace ProjectManager.Application.Services
 
         public async Task CreateAsync(UserDto userDto)
         {
+            await _userValidationService.ValidateAsync(userDto);
+            if (userDto == null)
+            {
+                throw new BadRequestException("User data is null.");
+            }
             var user = _mapper.Map<User>(userDto);
+            user.UserId = Guid.NewGuid();
+            user.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password, workFactor: 12);
             await _userRepository.CreateAsync(user);
         }
 
@@ -70,7 +84,7 @@ namespace ProjectManager.Application.Services
                 UserName = registerDto.UserName,
                 Email = registerDto.Email,
                 Password = encryptedPassword,
-                Role = "User"
+                Role = Roles.creator
             };
 
             await _userRepository.CreateAsync(user);

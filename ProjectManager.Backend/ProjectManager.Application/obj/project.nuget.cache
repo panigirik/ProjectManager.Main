@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "PI29kSL5W7ZV/QFTI5BqrDHfme4BITd5o4NG1rexBqsBz+3qzckEySQdgcxzZyQs5/t505utdn4aRdkt1CE3lw==",
+  "dgSpecHash": "sGn4qfaOaC4U65oBeNG6Ho7TB1f2LG+AdvHGyNnSavL1q6fpPyZYZ2FIIrEyf/HkEHL5OGPCL4SndnA/N/wb6w==",
   "success": true,
   "projectFilePath": "D:\\ProjectManager.Main\\ProjectManager.Backend\\ProjectManager.Application\\ProjectManager.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\cryptsharp\\1.3.0\\cryptsharp.1.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\dropbox.api\\6.32.0\\dropbox.api.6.32.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\firebaseadmin\\3.0.0\\firebaseadmin.3.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\firebasestorage.net\\1.0.2\\firebasestorage.net.1.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\google.api.gax\\4.8.0\\google.api.gax.4.8.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\google.api.gax.rest\\4.8.0\\google.api.gax.rest.4.8.0.nupkg.sha512",
     "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\V\\google.apis\\1.67.0\\google.apis.1.67.0.nupkg.sha512",

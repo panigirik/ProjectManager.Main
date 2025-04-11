@@ -135,3 +135,4 @@ D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Main\obj\Debug\net8
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Main\obj\Debug\net8.0\ProjectManager.Main.pdb
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Main\obj\Debug\net8.0\ProjectManager.Main.genruntimeconfig.cache
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Main\obj\Debug\net8.0\ref\ProjectManager.Main.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Main\bin\Debug\net8.0\BCrypt.Net-Next.dll

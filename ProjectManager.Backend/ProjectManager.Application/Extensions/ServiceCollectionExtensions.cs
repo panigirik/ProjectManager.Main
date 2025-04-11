@@ -21,7 +21,9 @@ namespace ProjectManager.Application.Extensions;
             services.AddAutoMapper(typeof(TicketMappingProfile));
             services.AddAutoMapper(typeof(BoardMappingProfile));
             services.AddAutoMapper(typeof(ColumnMappingProfile));
+            services.AddAutoMapper(typeof(RefreshTokenMappingProfile));
 
+            services.AddScoped<IAuthentificationService, AuthentificationService>();
             services.AddScoped<IBoardService, BoardService>();
             services.AddScoped<IColumnService, ColumnService>();
             services.AddScoped<ITicketService, TicketService>();

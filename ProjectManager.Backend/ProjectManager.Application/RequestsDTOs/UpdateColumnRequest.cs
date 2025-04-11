@@ -14,5 +14,5 @@ public class UpdateColumnRequest
     public Guid BoardId { get; set; } 
     
     [BsonRepresentation(BsonType.String)]
-    public List<Guid> TicketIds { get; set; } = new(); // Храним ссылки на тикеты
+    public List<Guid> TicketIds { get; set; } = new(); 
 }

@@ -49,5 +49,15 @@ public class UserRepository: IUserRepository
     {
         await _userDbContext.Users.DeleteOneAsync(u => u.UserId == id);
     }
+    
+    /// <summary>
+    /// Получает пользователя по email.
+    /// </summary>
+    /// <param name="email">Email пользователя.</param>
+    /// <returns>Пользователь с указанным email.</returns>
+    public async Task<User> GetByEmailAsync(string email)
+    {
+        return await _userDbContext.Users.Find(u => u.Email == email).FirstOrDefaultAsync();
+    }
         
 }
