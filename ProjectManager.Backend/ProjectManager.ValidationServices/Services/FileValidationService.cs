@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using ProjectManager.Application.ValidationInterfaces;
 using ProjectManager.ExternalServices.Services.ClamAV.Helpers;
-using ValidationException = System.ComponentModel.DataAnnotations.ValidationException;
 using SixLabors.ImageSharp;
 
 namespace ProjectManager.ValidationServices.Services

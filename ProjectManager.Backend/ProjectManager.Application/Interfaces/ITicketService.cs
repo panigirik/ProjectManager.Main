@@ -11,7 +11,7 @@ public interface ITicketService
     Task<Ticket> CreateTicketAsync(CreateTicketDto ticketDto);
     Task UpdateAsync(UpdateTicketDto ticketDto);
 
-    Task MoveNextColumn(Guid oldColumnId, Guid newColumnId);
+    Task MoveToColumn(MoveTicketRequest request);
     
     Task DeleteAsync(Guid id);
 }

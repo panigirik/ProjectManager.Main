@@ -27,6 +27,7 @@ namespace ProjectManager.Application.Extensions;
             services.AddScoped<IBoardService, BoardService>();
             services.AddScoped<IColumnService, ColumnService>();
             services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<ITicketTransitionService, TicketTransitionService>();
             services.AddScoped<IUserService, UserService>();
 
         }

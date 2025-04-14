@@ -13,6 +13,12 @@ C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Application\obj\
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Application\obj\Debug\net8.0\refint\ProjectManager.Application.dll
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.pdb
 C:\Users\Admin\RiderProjects\ProjectManager.Main\ProjectManager.Application\obj\Debug\net8.0\ref\ProjectManager.Application.dll
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.csproj.AssemblyReference.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.AssemblyInfoInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.AssemblyInfo.cs
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.csproj.CoreCompileInputs.cache
+D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.sourcelink.json
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.Application.deps.json
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.Application.dll
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.Application.pdb
@@ -20,12 +26,6 @@ D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Deb
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.ExternalServices.dll
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.Domain.pdb
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\bin\Debug\net8.0\ProjectManager.ExternalServices.pdb
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.csproj.AssemblyReference.cache
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.GeneratedMSBuildEditorConfig.editorconfig
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.AssemblyInfoInputs.cache
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.AssemblyInfo.cs
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.csproj.CoreCompileInputs.cache
-D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.sourcelink.json
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectM.74960663.Up2Date
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\ProjectManager.Application.dll
 D:\ProjectManager.Main\ProjectManager.Backend\ProjectManager.Application\obj\Debug\net8.0\refint\ProjectManager.Application.dll

@@ -2,7 +2,7 @@
 using Dropbox.Api.Files;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using ProjectManager.Application.Interfaces.ExternalServices;
+using ProjectManager.Domain.Interfaces.ExternalServices;
 
 namespace ProjectManager.ExternalServices.Services.CloudStorageServices;
 

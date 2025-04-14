@@ -16,9 +16,11 @@ public static class ServiceCollectionExtension
         services.AddSingleton<ColumnDbContext>();
         services.AddSingleton<RefreshTokenDbContext>();
         services.AddScoped<TicketDbContext>();
+        services.AddScoped<TicketTransitionRuleDbContext>();
         
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IBoardRepository, BoardRepository>();
+        services.AddScoped<ITicketTransitionRuleRepository, TicketTransitionRuleRepository>();
         services.AddScoped<IColumnRepository, ColumnRepository>();
         services.AddScoped<ITicketRepository, TicketRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();

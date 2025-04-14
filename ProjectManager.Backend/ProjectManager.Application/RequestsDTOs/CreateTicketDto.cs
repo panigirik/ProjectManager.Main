@@ -8,5 +8,5 @@ public class CreateTicketDto
     public string Description { get; set; }
     public string AssignedUserName { get; set; }
     public Guid ColumnId { get; set; }
-    public IFormFile[] Attachments { get; set; }
+    public IFormFile[]? Attachments { get; set; }
 }

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 
-namespace ProjectManager.Application.Interfaces.ExternalServices;
+namespace ProjectManager.Domain.Interfaces.ExternalServices;
 
 public interface IDropBoxClient
 {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
-using ProjectManager.Application.Interfaces.ExternalServices;
 using ProjectManager.Application.RequestsDTOs;
 using ProjectManager.Application.ValidationInterfaces;
+using ProjectManager.Domain.Interfaces.ExternalServices;
 using ProjectManager.ExternalServices.Services.CloudStorageServices;
 
 namespace ProjectManager.Main.Controllers;
@@ -46,7 +46,11 @@ public class TicketsController : ControllerBase
     [HttpPost("ticket")]
     public async Task<IActionResult> Create([FromForm] CreateTicketDto ticketDto)
     {
-        await _fileValidationService.ValidateFilesAsync(ticketDto.Attachments);
+        if (ticketDto.Attachments != null)
+        {
+            await _fileValidationService.ValidateFilesAsync(ticketDto.Attachments);
+        }
+        
         var newTicket = await _ticketService.CreateTicketAsync(ticketDto);
         return Ok(newTicket);
     }
@@ -64,16 +68,28 @@ public class TicketsController : ControllerBase
         return NoContent();
     }
     
-    [HttpPut("ticket/newColumn")]
-    public async Task<IActionResult> MoveToNextColumn(Guid oldColumnId, Guid newColumnId)
+    [HttpPut("move-ticket")]
+    public async Task<IActionResult> MoveTicket([FromForm] MoveTicketRequest request)
     {
-        if (newColumnId == null )
+        if (request.TicketId == Guid.Empty || request.NewColumnId == Guid.Empty)
         {
-            return BadRequest("Ticket data or columnId in null");
+            return BadRequest("TicketId or NewColumnId is invalid.");
         }
-        await _ticketService.MoveNextColumn(oldColumnId, newColumnId);
-        return NoContent();
+
+
+
+        try
+        {
+            // Передаем все входные данные в метод перемещения
+            await _ticketService.MoveToColumn(request);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
+
 
     [HttpDelete("ticket/{id}")]
     public async Task<IActionResult> Delete(Guid id)

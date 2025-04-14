@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
-using ProjectManager.Application.Interfaces.ExternalServices;
 using ProjectManager.Application.RequestsDTOs;
 using ProjectManager.Domain.Entities;
+using ProjectManager.Domain.Enums;
 using ProjectManager.Domain.Interfaces;
+using ProjectManager.Domain.Interfaces.ExternalServices;
 
 namespace ProjectManager.Application.Services
 {
@@ -13,14 +14,17 @@ namespace ProjectManager.Application.Services
         private readonly ITicketRepository _ticketRepository;
         private readonly IMapper _mapper;
         private readonly IDropBoxClient _dropBoxClient;
+        private readonly ITicketTransitionRuleRepository _ticketTransitionRuleRepository;
 
         public TicketService(ITicketRepository ticketRepository,
             IMapper mapper,
-            IDropBoxClient dropBoxClient)
+            IDropBoxClient dropBoxClient,
+            ITicketTransitionRuleRepository ticketTransitionRuleRepository)
         {
             _ticketRepository = ticketRepository;
             _mapper = mapper;
             _dropBoxClient = dropBoxClient;
+            _ticketTransitionRuleRepository = ticketTransitionRuleRepository;
         }
 
         public async Task<IEnumerable<GetTicketRequest>> GetAllAsync()
@@ -65,16 +69,66 @@ namespace ProjectManager.Application.Services
             await _ticketRepository.UpdateAsync(ticket);
         }
 
-        public async Task MoveNextColumn(Guid oldColumnId, Guid newColumnId)
+        public async Task MoveToColumn(MoveTicketRequest request)
         {
-            var ticket = await _ticketRepository.GetByIdAsync(oldColumnId);
-            if (ticket == null)
+            var ticket = await _ticketRepository.GetByIdAsync(request.TicketId)
+                             ?? throw new InvalidOperationException("Ticket not found.");
+
+            var fromColumnId = ticket.ColumnId;
+
+            var rule = await _ticketTransitionRuleRepository.GetRuleForTicketAsync(
+                ticket.TicketId, fromColumnId, request.NewColumnId);
+
+            if (rule != null)
             {
-                throw new InvalidOperationException("Ticket not found.");
+                if (!rule.IsAllowed)
+                    throw new InvalidOperationException("Transition is not allowed.");
+
+                // Проверка условий валидации
+                var validations = rule.RequiredValidations;
+
+                if (validations != TransitionValidationType.None)
+                {
+                    bool hasAttachment = (request.Attachments?.Length > 0) ||
+                                         (ticket.Attachments?.Length > 0);
+
+                    bool hasCommitLink = !string.IsNullOrWhiteSpace(request.CommitLink) ||
+                                         (!string.IsNullOrWhiteSpace(ticket.Description) &&
+                                          ticket.Description.Contains("http"));
+
+                    if (validations.HasFlag(TransitionValidationType.Attachment) && !hasAttachment)
+                        throw new InvalidOperationException("Transition requires an attachment.");
+
+                    if (validations.HasFlag(TransitionValidationType.CommitLink) && !hasCommitLink)
+                        throw new InvalidOperationException("Transition requires a commit link.");
+                }
+
+                if (rule.UserId.HasValue && rule.UserId.Value != request.UserId)
+                    throw new InvalidOperationException("Only the assigned user can move this ticket.");
             }
 
-            ticket.ColumnId = newColumnId; 
+            // Обновляем описание, если передан коммит
+            if (!string.IsNullOrWhiteSpace(request.CommitLink))
+            {
+                ticket.Description = request.CommitLink;
+            }
 
+            // Загружаем вложения
+            if (request.Attachments != null && request.Attachments.Length > 0)
+            {
+                var uploadedUrls = new List<string>();
+                foreach (var file in request.Attachments)
+                {
+                    var dropboxPath = $"/Documents/{file.FileName}";
+                    var uploadedUrl = await _dropBoxClient.UploadFileAsync(file, dropboxPath);
+                    uploadedUrls.Add(uploadedUrl);
+                }
+
+                ticket.Attachments = uploadedUrls.ToArray();
+            }
+
+            // Обновляем колонку
+            ticket.ColumnId = request.NewColumnId;
             await _ticketRepository.UpdateAsync(ticket);
         }
 

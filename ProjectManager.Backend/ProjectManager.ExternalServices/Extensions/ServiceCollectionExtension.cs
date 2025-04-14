@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProjectManager.Application.Interfaces.ExternalServices;
+using ProjectManager.Domain.Interfaces.ExternalServices;
 using ProjectManager.ExternalServices.Services.CloudStorageServices;
 
 namespace ProjectManager.ExternalServices.Extensions;
