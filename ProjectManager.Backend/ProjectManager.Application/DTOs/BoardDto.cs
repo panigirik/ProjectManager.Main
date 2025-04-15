@@ -10,5 +10,5 @@ public class BoardDto
     public string BoardName { get; set; }
 
     [BsonRepresentation(BsonType.String)]
-    public List<Guid> ColumnIds { get; set; } = new();
+    public List<Guid> ColumnIds { get; set; }
 }

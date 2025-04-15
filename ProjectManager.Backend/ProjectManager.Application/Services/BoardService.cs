@@ -39,7 +39,7 @@ public class BoardService : IBoardService
     public async Task UpdateAsync(BoardDto boardDto)
     {
         var updatedBoard = _mapper.Map<Board>(boardDto);
-
+        
         await _boardRepository.UpdateAsync(updatedBoard);
     }
 

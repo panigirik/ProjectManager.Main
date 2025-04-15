@@ -47,12 +47,8 @@ public class ColumnsController : ControllerBase
     }
     
     [HttpPut("column")]
-    public async Task<IActionResult> Update([FromBody] UpdateColumnRequest updateColumnRequest)
+    public async Task<IActionResult> Update([FromForm] UpdateColumnRequest updateColumnRequest)
     {
-        if (updateColumnRequest == null)
-        {
-            return BadRequest("Column data is null.");
-        }
 
         await _columnService.UpdateAsync(updateColumnRequest);
         return NoContent();

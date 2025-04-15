@@ -16,15 +16,9 @@ namespace ProjectManager.Main.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        public async Task<IActionResult> Register([FromBody] UserDto registerDto)
         {
-            if (await _userService.UserExistsAsync(registerDto))
-                return BadRequest("Username is already taken.");
-
-
-            var registrationSuccess = await _userService.RegisterUserAsync(registerDto);
-
-            if (registrationSuccess)
+            await _userService.CreateAsync(registerDto);
                 return Ok(new { Message = "User registered successfully" });
 
             return BadRequest("Error occurred during registration.");

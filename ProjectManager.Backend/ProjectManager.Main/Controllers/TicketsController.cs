@@ -56,14 +56,17 @@ public class TicketsController : ControllerBase
     }
     
     [HttpPut("ticket")]
-    public async Task<IActionResult> Update([FromBody] UpdateTicketRequest ticketRequest)
+    public async Task<IActionResult> Update([FromForm] UpdateTicketRequest ticketRequest)
     {
         if (ticketRequest == null)
         {
             return BadRequest("Ticket data is null.");
         }
 
-        await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
+        if (ticketRequest.Attachments != null)
+        {
+            await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
+        }
         await _ticketService.UpdateAsync(ticketRequest);
         return NoContent();
     }
@@ -80,8 +83,7 @@ public class TicketsController : ControllerBase
 
         try
         {
-            // Передаем все входные данные в метод перемещения
-            await _ticketService.MoveToColumn(request);
+            await _ticketService.MoveToColumnAsync(request);
             return NoContent();
         }
         catch (InvalidOperationException ex)

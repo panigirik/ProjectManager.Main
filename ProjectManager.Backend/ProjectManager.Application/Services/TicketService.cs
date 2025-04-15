@@ -69,7 +69,7 @@ namespace ProjectManager.Application.Services
             await _ticketRepository.UpdateAsync(ticket);
         }
 
-        public async Task MoveToColumn(MoveTicketRequest request)
+        public async Task MoveToColumnAsync(MoveTicketRequest request)
         {
             var ticket = await _ticketRepository.GetByIdAsync(request.TicketId)
                              ?? throw new InvalidOperationException("Ticket not found.");
@@ -83,8 +83,7 @@ namespace ProjectManager.Application.Services
             {
                 if (!rule.IsAllowed)
                     throw new InvalidOperationException("Transition is not allowed.");
-
-                // Проверка условий валидации
+                
                 var validations = rule.RequiredValidations;
 
                 if (validations != TransitionValidationType.None)
@@ -106,14 +105,12 @@ namespace ProjectManager.Application.Services
                 if (rule.UserId.HasValue && rule.UserId.Value != request.UserId)
                     throw new InvalidOperationException("Only the assigned user can move this ticket.");
             }
-
-            // Обновляем описание, если передан коммит
+            
             if (!string.IsNullOrWhiteSpace(request.CommitLink))
             {
                 ticket.Description = request.CommitLink;
             }
-
-            // Загружаем вложения
+            
             if (request.Attachments != null && request.Attachments.Length > 0)
             {
                 var uploadedUrls = new List<string>();
@@ -126,8 +123,7 @@ namespace ProjectManager.Application.Services
 
                 ticket.Attachments = uploadedUrls.ToArray();
             }
-
-            // Обновляем колонку
+            
             ticket.ColumnId = request.NewColumnId;
             await _ticketRepository.UpdateAsync(ticket);
         }

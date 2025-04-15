@@ -48,11 +48,6 @@ public class BoardsController : ControllerBase
     [HttpPut("column")]
     public async Task<IActionResult> Update([FromBody] BoardDto boardDto)
     {
-        if (boardDto == null)
-        {
-            return BadRequest("Board data is null.");
-        }
-
         await _boardService.UpdateAsync(boardDto);
         return NoContent();
     }

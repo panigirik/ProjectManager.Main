@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ProjectManager.Application.DTOs;
+﻿using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Application.RequestsDTOs;
 using ProjectManager.Domain.Entities;
@@ -11,12 +10,10 @@ namespace ProjectManager.Application.Services;
 public class TicketTransitionService : ITicketTransitionService
 {
     private readonly ITicketTransitionRuleRepository _ruleRepository;
-    private readonly IMapper _mapper;
 
-    public TicketTransitionService(ITicketTransitionRuleRepository ruleRepository, IMapper mapper)
+    public TicketTransitionService(ITicketTransitionRuleRepository ruleRepository)
     {
         _ruleRepository = ruleRepository;
-        _mapper = mapper;
     }
 
         public async Task ValidateTransitionAsync(TicketDto ticketDto, Guid toColumnId, Guid currentUserId)
@@ -29,24 +26,20 @@ public class TicketTransitionService : ITicketTransitionService
     
             if (!rule.IsAllowed)
                 throw new InvalidOperationException("Transition is not allowed.");
-    
-            // Если требуются проверки – выполняем универсально:
+            
             if (rule.RequiredValidations != TransitionValidationType.None)
             {
                 bool hasAttachment = ticketDto.Attachments != null && ticketDto.Attachments.Length > 0;
                 bool hasCommitLink = !string.IsNullOrWhiteSpace(ticketDto.Description) && ticketDto.Description.Contains("http");
-    
-                // Если требуется только attachment:
+                
                 if (rule.RequiredValidations == TransitionValidationType.Attachment && !hasAttachment)
                 {
                     throw new InvalidOperationException("Transition requires an attachment.");
                 }
-                // Если требуется только commit link:
                 if (rule.RequiredValidations == TransitionValidationType.CommitLink && !hasCommitLink)
                 {
                     throw new InvalidOperationException("Transition requires a commit link in the description.");
                 }
-                // Если требуются оба:
                 if (rule.RequiredValidations == (TransitionValidationType.Attachment | TransitionValidationType.CommitLink)
                     && (!hasAttachment || !hasCommitLink))
                 {

@@ -23,8 +23,17 @@ public class TicketRepository: ITicketRepository
     public async Task CreateAsync(Ticket ticket) =>
         await _ticketDbContext.Tickets.InsertOneAsync(ticket);
 
-    public async Task UpdateAsync(Ticket ticket) =>
+    public async Task UpdateAsync(Ticket ticket)
+    {
+        var existing = await _ticketDbContext.Tickets
+            .Find(t => t.TicketId == ticket.TicketId)
+            .FirstOrDefaultAsync();
+
+        ticket.Id = existing.Id; 
+
         await _ticketDbContext.Tickets.ReplaceOneAsync(t => t.TicketId == ticket.TicketId, ticket);
+    }
+
 
     public async Task DeleteAsync(Guid id) =>
         await _ticketDbContext.Tickets.DeleteOneAsync(t => t.TicketId == id);

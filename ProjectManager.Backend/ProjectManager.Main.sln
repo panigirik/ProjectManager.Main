@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.ValidationSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.ExternalServices", "ProjectManager.ExternalServices\ProjectManager.ExternalServices.csproj", "{3DE49E99-6BE9-42EB-9260-0B57D581DFA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Tests", "Application.Tests\Application.Tests.csproj", "{720D83BB-F57E-492D-99DB-993DC1382D0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{3DE49E99-6BE9-42EB-9260-0B57D581DFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DE49E99-6BE9-42EB-9260-0B57D581DFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DE49E99-6BE9-42EB-9260-0B57D581DFA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720D83BB-F57E-492D-99DB-993DC1382D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720D83BB-F57E-492D-99DB-993DC1382D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720D83BB-F57E-492D-99DB-993DC1382D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720D83BB-F57E-492D-99DB-993DC1382D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{496E6449-816F-4824-8010-E617B19C9A72} = {E77917D1-B4FE-4E94-A87F-5B94A29DBEB8}
@@ -65,5 +71,6 @@ Global
 		{762F6C08-AA34-452F-853D-D61F5DF4D9B2} = {DAAA2479-1B99-46FA-8D49-5EF7D130C6D0}
 		{1D19D617-7072-4FB8-8306-C0B1779B1659} = {DAAA2479-1B99-46FA-8D49-5EF7D130C6D0}
 		{3DE49E99-6BE9-42EB-9260-0B57D581DFA4} = {DAAA2479-1B99-46FA-8D49-5EF7D130C6D0}
+		{720D83BB-F57E-492D-99DB-993DC1382D0F} = {C10C28DB-3379-442C-86D9-DD71B0CC902C}
 	EndGlobalSection
 EndGlobal

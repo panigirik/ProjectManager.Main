@@ -11,7 +11,7 @@ public interface ITicketService
     Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest);
     Task UpdateAsync(UpdateTicketRequest ticketRequest);
 
-    Task MoveToColumn(MoveTicketRequest request);
+    Task MoveToColumnAsync(MoveTicketRequest request);
     
     Task DeleteAsync(Guid id);
 }

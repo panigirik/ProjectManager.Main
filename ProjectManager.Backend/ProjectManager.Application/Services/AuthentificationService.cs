@@ -16,14 +16,12 @@ public class AuthentificationService: IAuthentificationService
     private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IJwtTokenService _jwtTokenService;
     private readonly ILoginValidationService _validationService;
-    private readonly IRefreshTokenRepository _repository;
     private readonly IMapper _mapper;
 
     public AuthentificationService(IUserRepository userRepository,
         IRefreshTokenRepository refreshTokenRepository,
         IJwtTokenService jwtTokenService,
         ILoginValidationService validationService,
-        IRefreshTokenRepository repository,
         IMapper mapper)
     {
         _userRepository = userRepository;
@@ -31,7 +29,6 @@ public class AuthentificationService: IAuthentificationService
         _jwtTokenService = jwtTokenService;
         _validationService = validationService;
         _mapper = mapper;
-        _repository = repository;
     }
     
     /// <summary>
@@ -76,13 +73,13 @@ public class AuthentificationService: IAuthentificationService
     /// <returns>Задача, представляющая асинхронную операцию.</returns>
     public async Task RevokeRefreshTokenAsync(Guid id)
     {
-        var token = await _repository.GetByIdAsync(id);
+        var token = await _refreshTokenRepository.GetByIdAsync(id);
         if (token == null)
         {
             throw new NotFoundException("token not found");
         }
         token.IsRevoked = true;
-        await _repository.UpdateAsync(token);
+        await _refreshTokenRepository.UpdateAsync(token);
     
     }
     

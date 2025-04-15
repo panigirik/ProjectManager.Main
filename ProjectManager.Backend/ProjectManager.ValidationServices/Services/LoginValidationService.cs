@@ -29,8 +29,12 @@ public class LoginValidationService : ILoginValidationService
     public async Task<ValidationResult> ValidateLoginRequestAsync(LoginRequest request)
     {
         var result = await _loginRequestValidator.ValidateAsync(request);
-        
 
+        if (!result.IsValid)
+        {
+            throw new ValidationException(result.Errors);
+        }
+        
         return result;
     }
 
