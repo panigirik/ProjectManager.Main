@@ -40,13 +40,13 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<TicketDto>(ticket);
         }
 
-        public async Task<Ticket> CreateTicketAsync(CreateTicketDto ticketDto)
+        public async Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest)
         {
             var uploadedUrls = new List<string>();
 
-            if (ticketDto.Attachments != null && ticketDto.Attachments.Length > 0)
+            if (ticketRequest.Attachments != null && ticketRequest.Attachments.Length > 0)
             {
-                foreach (var file in ticketDto.Attachments)
+                foreach (var file in ticketRequest.Attachments)
                 {
                     var dropboxPath = $"/Documents/{file.FileName}";
 
@@ -55,7 +55,7 @@ namespace ProjectManager.Application.Services
                 }
             }
             
-            var ticket = _mapper.Map<Ticket>(ticketDto);
+            var ticket = _mapper.Map<Ticket>(ticketRequest);
             ticket.Attachments = uploadedUrls.ToArray();
             await _ticketRepository.CreateAsync(ticket);
             return ticket;
@@ -63,9 +63,9 @@ namespace ProjectManager.Application.Services
 
 
 
-        public async Task UpdateAsync(UpdateTicketDto ticketDto)
+        public async Task UpdateAsync(UpdateTicketRequest ticketRequest)
         {
-            var ticket = _mapper.Map<Ticket>(ticketDto);
+            var ticket = _mapper.Map<Ticket>(ticketRequest);
             await _ticketRepository.UpdateAsync(ticket);
         }
 

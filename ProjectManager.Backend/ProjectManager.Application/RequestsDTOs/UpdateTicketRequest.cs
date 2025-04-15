@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjectManager.Application.RequestsDTOs;
 
-public class UpdateTicketDto
+public class UpdateTicketRequest
 {
     [BsonRepresentation(BsonType.String)]
     public Guid TicketId { get; set; } 

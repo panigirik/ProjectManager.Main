@@ -44,27 +44,27 @@ public class TicketsController : ControllerBase
     }
     
     [HttpPost("ticket")]
-    public async Task<IActionResult> Create([FromForm] CreateTicketDto ticketDto)
+    public async Task<IActionResult> Create([FromForm] CreateTicketRequest ticketRequest)
     {
-        if (ticketDto.Attachments != null)
+        if (ticketRequest.Attachments != null)
         {
-            await _fileValidationService.ValidateFilesAsync(ticketDto.Attachments);
+            await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
         }
         
-        var newTicket = await _ticketService.CreateTicketAsync(ticketDto);
+        var newTicket = await _ticketService.CreateTicketAsync(ticketRequest);
         return Ok(newTicket);
     }
     
     [HttpPut("ticket")]
-    public async Task<IActionResult> Update([FromBody] UpdateTicketDto ticketDto)
+    public async Task<IActionResult> Update([FromBody] UpdateTicketRequest ticketRequest)
     {
-        if (ticketDto == null)
+        if (ticketRequest == null)
         {
             return BadRequest("Ticket data is null.");
         }
 
-        await _fileValidationService.ValidateFilesAsync(ticketDto.Attachments);
-        await _ticketService.UpdateAsync(ticketDto);
+        await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
+        await _ticketService.UpdateAsync(ticketRequest);
         return NoContent();
     }
     

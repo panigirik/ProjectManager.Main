@@ -21,6 +21,7 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IFileValidationService, FileValidationService>();
         services.AddScoped<IAddUserValidationService, AddUserValidationService>();
+        services.AddScoped<IUserDtoValidationService, UserDtoValidationService>();
         services.AddScoped<ILoginValidationService, LoginValidationService>();
         
         
