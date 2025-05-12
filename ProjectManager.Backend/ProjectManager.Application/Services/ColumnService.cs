@@ -33,6 +33,12 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<ColumnDto>(column);
         }
 
+        public async Task<IEnumerable<ColumnDto>> GetColumnsByBoardIdAsync(Guid boardId)
+        {
+            var columns = await _columnRepository.GetColumnsByBoardAsync(boardId);
+            return _mapper.Map<IEnumerable<ColumnDto>>(columns);
+        }
+
         public async Task CreateAsync(ColumnDto columnDto)
         {
             var column = _mapper.Map<Column>(columnDto);

@@ -14,15 +14,12 @@ public class TicketsController : ControllerBase
 {
     private readonly ITicketService _ticketService;
     private readonly IFileValidationService _fileValidationService;
-    private readonly IDropBoxClient _dropBoxClient;
     
     public TicketsController(ITicketService ticketService,
-        IFileValidationService fileValidationService,
-        IDropBoxClient dropBoxClient)
+        IFileValidationService fileValidationService)
     {
         _ticketService = ticketService;
         _fileValidationService = fileValidationService;
-        _dropBoxClient = dropBoxClient;
     }
     
     [HttpGet("ticket")]
@@ -41,6 +38,13 @@ public class TicketsController : ControllerBase
             return NotFound();
         }
         return Ok(ticket);
+    }
+
+    [HttpGet("column/{columnId}")]
+    public async Task<IActionResult> GetTicketsByColumn(Guid columnId)
+    {
+        var tickets = await _ticketService.GetTicketsByColumnIdAsync(columnId);
+        return Ok(tickets);
     }
     
     [HttpPost("ticket")]

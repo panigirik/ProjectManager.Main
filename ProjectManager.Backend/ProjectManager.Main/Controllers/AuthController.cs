@@ -22,7 +22,7 @@ public class AuthController: ControllerBase
     /// <param name="request">Запрос на вход с email и паролем.</param>
     /// <returns>Токен доступа и refresh токен.</returns>
     [HttpPost("login")]
-    public async Task<ActionResult<LoginResult>> Login([FromForm] LoginRequest request)
+    public async Task<ActionResult<LoginResult>> Login([FromBody] LoginRequest request)
     {
         var response = await _authenticationService.LoginAsync(request);
         return Ok(response);

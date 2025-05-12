@@ -14,14 +14,27 @@ public class ColumnRepository: IColumnRepository
         _columnDbContext = context;
     }
 
-    public async Task<IEnumerable<Column>> GetAllAsync() =>
-        await _columnDbContext.Columns.Find(_ => true).ToListAsync();
+    public async Task<IEnumerable<Column>> GetAllAsync()
+    {
+        return await _columnDbContext.Columns.Find(_ => true).ToListAsync();
+    }
 
-    public async Task<Column> GetByIdAsync(Guid id) =>
-        await _columnDbContext.Columns.Find(c => c.ColumnId == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Column column) =>
+    public async Task<Column> GetByIdAsync(Guid id)
+    {
+        return await _columnDbContext.Columns.Find(c => c.ColumnId == id).FirstOrDefaultAsync();
+    }
+
+    public async Task<IEnumerable<Column>> GetColumnsByBoardAsync(Guid boardId)
+    {
+        return await _columnDbContext.Columns.Find(c => c.BoardId == boardId).ToListAsync();
+    }
+
+    public async Task CreateAsync(Column column)
+    {
         await _columnDbContext.Columns.InsertOneAsync(column);
+    }
+        
 
     public async Task UpdateAsync(Column column)
     {

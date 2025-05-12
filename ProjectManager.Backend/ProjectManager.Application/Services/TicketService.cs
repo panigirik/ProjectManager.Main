@@ -40,6 +40,13 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<TicketDto>(ticket);
         }
 
+        public async Task<List<TicketDto>> GetTicketsByColumnIdAsync(Guid columnId)
+        {
+            var tickets = await _ticketRepository.GetTicketsByColumnId(columnId);
+            return _mapper.Map<List<TicketDto>>(tickets);
+        }
+
+        
         public async Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest)
         {
             var uploadedUrls = new List<string>();

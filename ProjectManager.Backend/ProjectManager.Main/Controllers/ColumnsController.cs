@@ -33,6 +33,13 @@ public class ColumnsController : ControllerBase
         }
         return Ok(column);
     }
+
+    [HttpGet("columns/{boardId}")]
+    public async Task<IActionResult> GetColumnsByBoardId(Guid boardId)
+    {
+        var columns = await _columnService.GetColumnsByBoardIdAsync(boardId);
+        return Ok(columns);
+    }
     
     [HttpPost("column")]
     public async Task<IActionResult> Create([FromBody] ColumnDto columnDto)

@@ -22,6 +22,14 @@ namespace ProjectManager.Main
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+            
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -37,6 +45,7 @@ namespace ProjectManager.Main
             //app.UseHttpsRedirection();
             //app.UseStaticFiles();
             app.MapControllers();
+            app.UseCors("AllowAllOrigins");
             app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseRouting();
             app.UseAuthorization();

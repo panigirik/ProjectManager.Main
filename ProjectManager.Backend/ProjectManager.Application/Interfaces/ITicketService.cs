@@ -8,6 +8,8 @@ public interface ITicketService
 {
     Task<IEnumerable<GetTicketRequest>> GetAllAsync();
     Task<TicketDto> GetByIdAsync(Guid id);
+
+    Task<List<TicketDto>> GetTicketsByColumnIdAsync(Guid columnId);
     Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest);
     Task UpdateAsync(UpdateTicketRequest ticketRequest);
 

@@ -14,14 +14,29 @@ public class TicketRepository: ITicketRepository
         _ticketDbContext = context;
     }
 
-    public async Task<IEnumerable<Ticket>> GetAllAsync() =>
-        await _ticketDbContext.Tickets.Find(_ => true).ToListAsync();
+    public async Task<IEnumerable<Ticket>> GetAllAsync()
+    {
+        return await _ticketDbContext.Tickets.Find(_ => true).ToListAsync();
+    }
 
-    public async Task<Ticket> GetByIdAsync(Guid id) =>
-        await _ticketDbContext.Tickets.Find(t => t.TicketId == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Ticket ticket) =>
+    public async Task<Ticket> GetByIdAsync(Guid ticketId)
+    {
+        return await _ticketDbContext.Tickets.Find(t => t.TicketId == ticketId).FirstOrDefaultAsync();
+    }
+       
+
+    public async Task<IEnumerable<Ticket>> GetTicketsByColumnId(Guid columnId)
+    {
+        return await _ticketDbContext.Tickets.Find(t => t.ColumnId == columnId).ToListAsync();
+    }
+
+
+    public async Task CreateAsync(Ticket ticket)
+    {
         await _ticketDbContext.Tickets.InsertOneAsync(ticket);
+    }
+        
 
     public async Task UpdateAsync(Ticket ticket)
     {
