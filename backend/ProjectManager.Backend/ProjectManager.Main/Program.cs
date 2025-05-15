@@ -4,6 +4,7 @@ using ProjectManager.Identity.Extensions;
 using ProjectManager.Main.ExceptionsHandling;
 using ProjectManager.Persistence.Extensions;
 using ProjectManager.ValidationServices.Extensions;
+using Serilog;
 
 namespace ProjectManager.Main
 {
@@ -12,6 +13,15 @@ namespace ProjectManager.Main
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
+            builder.Host.UseSerilog((context, services, configuration) =>
+            {
+                configuration
+                    .ReadFrom.Configuration(context.Configuration)
+                    .ReadFrom.Services(services)
+                    .Enrich.FromLogContext();
+            });
+            
             builder.Services.AddCoreApplicationServices();
             builder.Services.AddControllersWithViews();
             builder.Services.AddInfrastructureIdentityServices(builder.Configuration);
@@ -31,7 +41,7 @@ namespace ProjectManager.Main
             });
             
             var app = builder.Build();
-
+            app.UseSerilogRequestLogging();
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

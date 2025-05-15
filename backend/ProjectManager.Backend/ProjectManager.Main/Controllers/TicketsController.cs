@@ -76,15 +76,12 @@ public class TicketsController : ControllerBase
     }
     
     [HttpPut("move-ticket")]
-    public async Task<IActionResult> MoveTicket([FromForm] MoveTicketRequest request)
+    public async Task<IActionResult> MoveTicket([FromBody] MoveTicketRequest request)
     {
         if (request.TicketId == Guid.Empty || request.NewColumnId == Guid.Empty)
         {
             return BadRequest("TicketId or NewColumnId is invalid.");
         }
-
-
-
         try
         {
             await _ticketService.MoveToColumnAsync(request);

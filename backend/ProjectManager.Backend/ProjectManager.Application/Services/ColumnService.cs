@@ -41,6 +41,7 @@ namespace ProjectManager.Application.Services
 
         public async Task CreateAsync(ColumnDto columnDto)
         {
+            columnDto.ColumnId = Guid.NewGuid();
             var column = _mapper.Map<Column>(columnDto);
             
             await _columnRepository.CreateAsync(column);
