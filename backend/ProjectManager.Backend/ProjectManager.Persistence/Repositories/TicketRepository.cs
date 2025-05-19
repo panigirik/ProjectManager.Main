@@ -50,6 +50,9 @@ public class TicketRepository: ITicketRepository
     }
 
 
-    public async Task DeleteAsync(Guid id) =>
+    public async Task DeleteAsync(Guid id)
+    {
         await _ticketDbContext.Tickets.DeleteOneAsync(t => t.TicketId == id);
+    }
+    
 }

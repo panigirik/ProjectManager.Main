@@ -100,4 +100,5 @@ public class TicketsController : ControllerBase
         await _ticketService.DeleteAsync(id);
         return NoContent();
     }
+    
 }

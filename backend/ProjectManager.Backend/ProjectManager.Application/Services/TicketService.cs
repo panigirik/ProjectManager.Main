@@ -140,5 +140,6 @@ namespace ProjectManager.Application.Services
         {
             await _ticketRepository.DeleteAsync(id);
         }
+        
     }
 }

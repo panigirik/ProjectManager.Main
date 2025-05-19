@@ -1,13 +1,20 @@
 <template>
-  <div class="container">
-    <h1>Contact Manager</h1>
-    <ContactSearch />
-    <hr />
-    <ContactList />
-  </div>
+  <router-view />
 </template>
 
-<script setup>
-import ContactSearch from './components/ContactSearch.vue'
-import ContactList from './components/ContactList.vue'
+<script>
+export default {
+  name: 'App'
+}
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

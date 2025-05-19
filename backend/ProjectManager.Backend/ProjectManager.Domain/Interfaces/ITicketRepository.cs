@@ -11,4 +11,5 @@ public interface ITicketRepository
     Task CreateAsync(Ticket ticket);
     Task UpdateAsync(Ticket ticket);
     Task DeleteAsync(Guid id);
+    
 }
