@@ -1,34 +1,36 @@
 <template>
-    <div class="ticket-card">
-      <div class="ticket-content">
-        <h4>{{ ticket.title }}</h4>
-        <p>{{ ticket.description }}</p>
-        <!-- Можно сюда добавить любую дополнительную инфу -->
-      </div>
-  
-      <button
-        class="delete-icon-btn"
-        aria-label="Delete ticket"
-        @click="$emit('openDeleteConfirmation', ticket.id)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="white"
-          viewBox="0 0 24 24"
-          stroke="white"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3 6h18M9 6v12a2 2 0 0 0 4 0V6m-4 0h4"
-          />
-        </svg>
-      </button>
+  <div class="ticket-card" @click="$emit('openTicketDetail', ticket.id)">
+    <div class="ticket-content">
+      <h4>{{ ticket.title }}</h4>
+      <p>{{ ticket.description }}</p>
     </div>
-  </template>
+
+    <!-- Для кнопки удаления добавляем остановку всплытия клика,
+         чтобы клик по кнопке не запускал открытие окна деталей -->
+    <button
+      class="delete-icon-btn"
+      aria-label="Delete ticket"
+      @click.stop="$emit('openDeleteConfirmation', ticket.id)"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="white"
+        viewBox="0 0 24 24"
+        stroke="white"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 6h18M9 6v12a2 2 0 0 0 4 0V6m-4 0h4"
+        />
+      </svg>
+    </button>
+  </div>
+</template>
+
   
   <script>
   export default {

@@ -65,6 +65,20 @@
             @ticketMoved="loadColumns"
           />
 
+          <TicketCard
+            v-for="ticket in column.tickets"
+            :key="ticket.ticketId"
+            :ticket="ticket"
+            @openTicketDetail="openTicketDetail"
+            @openDeleteConfirmation="deleteTicket"
+          />
+
+          <TicketDetailModal
+            v-if="showTicketDetailModal && selectedTicketId"
+            :ticketId="selectedTicketId"
+            @close="closeTicketDetailModal"
+          />
+
 
 
           <button @click="openTicketModal(column.columnId)" class="add-ticket-btn">
@@ -93,6 +107,7 @@ import CreateColumnModal from '../Columns/CreateColumnModal.vue';
 import CreateTicketModal from '../Tickets/CreateTicketModal.vue';
 import MoveTicketDraggable from '../Tickets/MoveTicketDraggable.vue';
 import TransitionRulesModal from '../Tickets/TransitionRulesModal.vue';
+import TicketDetailModal from '../Tickets/TicketDetailModal.vue';
 
 export default {
   name: 'BoardDetailsPage',
@@ -100,7 +115,8 @@ export default {
     CreateColumnModal,
     CreateTicketModal,
     MoveTicketDraggable,
-    TransitionRulesModal
+    TransitionRulesModal,
+    TicketDetailModal
   },
   data() {
     return {
@@ -177,6 +193,24 @@ export default {
         console.error("Error loading columns:", error);
         this.columns = [];
       }
+    },
+
+      async openTicketDetail(ticketId) {
+      const token = localStorage.getItem('accessToken');
+      try {
+        const response = await axios.get(
+          `http://localhost:5258/api/Tickets/ticket/${ticketId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        this.selectedTicket = response.data;
+        this.showTicketDetailModal = true;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    closeTicketDetailModal() {
+      this.showTicketDetailModal = false;
+      this.selectedTicket = null;
     },
 
     async fetchTickets() {
@@ -335,6 +369,3 @@ toggleColumnMenu(columnId) {
 
 
 </style>
-
-
-
