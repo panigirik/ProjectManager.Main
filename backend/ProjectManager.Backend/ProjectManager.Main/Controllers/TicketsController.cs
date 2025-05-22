@@ -89,9 +89,10 @@ public class TicketsController : ControllerBase
         }
         catch (InvalidOperationException ex)
         {
-            return BadRequest(ex.Message);
+            return BadRequest(ex.Message); // ← вот сюда должно попадать
         }
     }
+
 
 
     [HttpDelete("ticket/{id}")]

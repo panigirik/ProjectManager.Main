@@ -21,7 +21,7 @@ namespace ProjectManager.Main
                     .ReadFrom.Services(services)
                     .Enrich.FromLogContext();
             });
-            
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddCoreApplicationServices();
             builder.Services.AddControllersWithViews();
             builder.Services.AddInfrastructureIdentityServices(builder.Configuration);

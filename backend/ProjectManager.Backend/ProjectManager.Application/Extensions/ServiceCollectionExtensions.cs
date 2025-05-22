@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Netway.Utils.Interfaces;
+using Netway.Utils.Services;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Application.Mappings;
 using ProjectManager.Application.Services;
@@ -29,6 +31,8 @@ namespace ProjectManager.Application.Extensions;
             services.AddScoped<ITicketService, TicketService>();
             services.AddScoped<ITicketTransitionService, TicketTransitionService>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IUserHelperService, UserHelperService>();
 
         }
     }

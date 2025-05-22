@@ -16,7 +16,7 @@ public class TicketTransitionController : ControllerBase
     }
     
     [HttpPost("rule")]
-    public async Task<IActionResult> AddRule([FromForm] CreateTransitionRuleRequest request)
+    public async Task<IActionResult> AddRule([FromBody] CreateTransitionRuleRequest request)
     {
         var result = await _transitionService.AddTransitionRuleAsync(request);
         return CreatedAtAction(nameof(AddRule), new { id = result.TicketTransitionRuleId }, result);

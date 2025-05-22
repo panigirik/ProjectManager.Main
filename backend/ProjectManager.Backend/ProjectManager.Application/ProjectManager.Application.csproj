@@ -24,4 +24,10 @@
       <ProjectReference Include="..\ProjectManager.ExternalServices\ProjectManager.ExternalServices.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Netway.Utils">
+        <HintPath>..\..\..\..\SocialNetwork\Libs\Netway.Utils.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using ProjectManager.Application.DTOs;
+﻿using Netway.Utils.Interfaces;
+using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Application.RequestsDTOs;
 using ProjectManager.Domain.Entities;
@@ -10,10 +11,13 @@ namespace ProjectManager.Application.Services;
 public class TicketTransitionService : ITicketTransitionService
 {
     private readonly ITicketTransitionRuleRepository _ruleRepository;
+    private readonly IUserHelperService _userHelperService;
 
-    public TicketTransitionService(ITicketTransitionRuleRepository ruleRepository)
+    public TicketTransitionService(ITicketTransitionRuleRepository ruleRepository,
+        IUserHelperService userHelperService)
     {
         _ruleRepository = ruleRepository;
+        _userHelperService = userHelperService;
     }
 
         public async Task ValidateTransitionAsync(TicketDto ticketDto, Guid toColumnId, Guid currentUserId)
@@ -61,7 +65,7 @@ public class TicketTransitionService : ITicketTransitionService
                 ToColumnId = request.ToColumnId,
                 IsAllowed = request.IsAllowed,
                 RequiredValidations = request.RequiredValidations,
-                UserId = request.UserId
+                UserId =  _userHelperService.GetCurrentUser().UserId
             };
             
             return await _ruleRepository.AddTransitionRuleAsync(rule);

@@ -70,7 +70,6 @@ export default {
             ticketId: ticketId,
             newColumnId: newColumnId,
             userId: userId,
-            commitLink: '',
           },
           {
             headers: {
@@ -82,6 +81,11 @@ export default {
         this.$emit('ticketMoved');
       } catch (error) {
         console.error('Error moving ticket:', error);
+        let message = 'Unknown error occurred while moving ticket.';
+        if (error.response && error.response.data) {
+          message = error.response.data;
+        }
+        alert(`Ticket move failed: ${message}`);
       }
     },
 
