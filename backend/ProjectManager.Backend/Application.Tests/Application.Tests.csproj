@@ -18,4 +18,10 @@
       <ProjectReference Include="..\ProjectManager.Domain\ProjectManager.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Netway.Utils">
+        <HintPath>..\..\..\..\SocialNetwork\Libs\Netway.Utils.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

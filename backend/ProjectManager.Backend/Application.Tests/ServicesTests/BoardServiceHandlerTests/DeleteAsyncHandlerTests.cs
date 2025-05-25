@@ -13,7 +13,7 @@ namespace Application.Tests.ServicesTests.BoardServiceHandlerTests
         public DeleteAsyncHandlerTests()
         {
             _boardRepositoryMock = new Mock<IBoardRepository>();
-            _service = new BoardService(_boardRepositoryMock.Object, null); 
+            _service = new BoardService(_boardRepositoryMock.Object, null, null, null, null); 
         }
 
         [Fact]

@@ -16,6 +16,9 @@ public class Board
     [BsonRepresentation(BsonType.String)]
     public Guid BoardId { get; set; } 
 
+    [BsonRepresentation(BsonType.String)]
+    public Guid CreatorId { get; set; } 
+    
     public string BoardName { get; set; }
     
     [BsonRepresentation(BsonType.String)]

@@ -59,7 +59,6 @@ namespace ProjectManager.Identity.Extensions;
                         },
                         OnMessageReceived = context =>
                         {
-                            // Для SignalR берем токен из query string
                             var accessToken = context.Request.Query["access_token"];
                             var path = context.HttpContext.Request.Path;
 

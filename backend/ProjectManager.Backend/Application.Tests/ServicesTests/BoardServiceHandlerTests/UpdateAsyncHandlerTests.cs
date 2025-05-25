@@ -19,7 +19,7 @@ namespace Application.Tests.ServicesTests.BoardServiceHandlerTests
             _boardRepositoryMock = new Mock<IBoardRepository>();
             _mapperMock = new Mock<IMapper>();
 
-            _service = new BoardService(_boardRepositoryMock.Object, _mapperMock.Object);
+            _service = new BoardService(_boardRepositoryMock.Object, _mapperMock.Object, null, null, null);
         }
 
         [Fact]

@@ -33,7 +33,7 @@ public class BoardsController : ControllerBase
         return Ok(board);
     }
     
-    [HttpPost("column")]
+    [HttpPost]
     public async Task<IActionResult> Create([FromBody] BoardDto boardDto)
     {
         if (boardDto == null)

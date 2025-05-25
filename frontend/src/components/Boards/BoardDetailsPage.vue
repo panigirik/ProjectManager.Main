@@ -1,102 +1,103 @@
 <template>
   <div>
-    <h1>Board Details</h1>
+    <el-page-header content="Board Details" />
 
-    <div v-if="loading">Loading...</div>
-
-    <div v-else-if="board">
-      <h2>{{ board.boardName }}</h2>
-
-      <button v-if="isCreator" @click="showModal = true" class="add-column-btn">
-        + Add Column
-      </button>
-
-      <CreateColumnModal
-        v-if="showModal"
-        :boardId="board.boardId"
-        @close="showModal = false"
-        @columnCreated="loadColumns"
-      />
-
-      <button v-if="isCreator" @click="showRulesModal = true" class="configure-rules-btn">
-      + Configure Transition Rules
-      </button>
-
-      <TransitionRulesModal
-        v-if="showRulesModal"
-        :boardId="board.boardId"
-        :columns="columns"
-        :tickets="tickets"
-        @close="showRulesModal = false"
-      />
-
-
-
-
-      <!-- ✅ ОБЁРТКА С FLEX-КОНТЕЙНЕРОМ -->
-      <div class="columns-container">
-        <div
-          v-for="column in columns"
-          :key="column.columnId"
-          class="column"
-        >
-          <!-- 🔽 ВСТАВЛЕННЫЙ БЛОК С НАЗВАНИЕМ И МЕНЮ -->
-          <div class="column-header">
-            <h3>{{ column.columnName }}</h3>
-            <div class="column-menu-wrapper">
-              <button @click="toggleColumnMenu(column.columnId)" class="menu-button">⋮</button>
-              <div v-if="openMenuId === column.columnId" class="menu-dropdown">
-                <button @click="deleteColumn(column.columnId)">Delete Column</button>
-                <button @click="sortTicketsByDate(column)">Sort Tickets by Date</button>
-              </div>
+    <el-skeleton :loading="loading" animated>
+      <template #default>
+        <el-card shadow="always">
+          <div class="board-header">
+            <h2>{{ board.boardName }}</h2>
+            <div class="actions">
+              <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
+              <el-button v-if="isCreator" type="info" @click="showRulesModal = true">+ Configure Transition Rules</el-button>
             </div>
           </div>
-          <!-- 🔼 КОНЕЦ БЛОКА -->
+        </el-card>
 
-          <div v-if="!column.tickets || column.tickets.length === 0">
-            <p>No tickets</p>
-          </div>
+        <CreateColumnModal
+          v-if="showModal"
+          :boardId="board.boardId"
+          @close="showModal = false"
+          @columnCreated="loadColumns"
+        />
 
+        <TransitionRulesModal
+          v-if="showRulesModal"
+          :boardId="board.boardId"
+          :columns="columns"
+          :tickets="tickets"
+          @close="showRulesModal = false"
+        />
 
-          <MoveTicketDraggable
-            :column="column"
-            :tickets="column.tickets"
-            @update:tickets="newTickets => column.tickets = newTickets"
-            @ticketMoved="loadColumns"
-          />
-
-          <TicketCard
-            v-for="ticket in column.tickets"
-            :key="ticket.ticketId"
-            :ticket="ticket"
-            @openTicketDetail="openTicketDetail"
-            @openDeleteConfirmation="deleteTicket"
-          />
-
-          <TicketDetailModal
-            v-if="showTicketDetailModal && selectedTicketId"
-            :ticketId="selectedTicketId"
-            @close="closeTicketDetailModal"
-          />
+        <div class="columns-container">
+          <el-card
+            v-for="column in columns"
+            :key="column.columnId"
+            class="column"
+            shadow="hover"
+          >
 
 
+          <div style="position: relative; width: 100%; height: 100%;">
+    <el-dropdown 
+      trigger="click" 
+      @command="cmd => handleColumnCommand(cmd, column)"
+      style="position: absolute; top: 0; right: 0;"
+    >
+      <span class="dropdown-icon">
+        <el-icon><MoreFilled /></el-icon>
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item command="delete">Delete Column</el-dropdown-item>
+          <el-dropdown-item command="sort">Sort Tickets by Date</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+  </div>
 
-          <button @click="openTicketModal(column.columnId)" class="add-ticket-btn">
-            + Add Ticket
-          </button>
 
-          <CreateTicketModal 
-            v-if="showTicketModal && selectedColumnId === column.columnId"
-            :columnId="column.columnId"
-            @close="showTicketModal = false"
-            @ticketCreated="refreshColumn"
-          />
+
+            <el-empty v-if="!column.tickets || column.tickets.length === 0" description="No tickets" />
+
+            <MoveTicketDraggable
+              :column="column"
+              :tickets="column.tickets"
+              @update:tickets="newTickets => column.tickets = newTickets"
+              @ticketMoved="loadColumns"
+            />
+
+            
+            <TicketCard
+              v-for="ticket in column.tickets"
+              :key="ticket.ticketId"
+              :ticket="ticket"
+              @openTicketDetail="openTicketDetail"
+              @openDeleteConfirmation="deleteTicket"
+            />
+
+            <TicketDetailModal
+              v-if="showTicketDetailModal && selectedTicketId"
+              :ticketId="selectedTicketId"
+              @close="closeTicketDetailModal"
+            />
+
+            <el-button type="success" icon="el-icon-plus" @click="openTicketModal(column.columnId)" plain>
+              Add Ticket
+            </el-button>
+
+            <CreateTicketModal
+              v-if="showTicketModal && selectedColumnId === column.columnId"
+              :columnId="column.columnId"
+              @close="showTicketModal = false"
+              @ticketCreated="refreshColumn"
+            />
+          </el-card>
         </div>
-      </div>
-    </div>
+      </template>
+    </el-skeleton>
   </div>
 </template>
-
 
 
 
@@ -108,6 +109,7 @@ import CreateTicketModal from '../Tickets/CreateTicketModal.vue';
 import MoveTicketDraggable from '../Tickets/MoveTicketDraggable.vue';
 import TransitionRulesModal from '../Tickets/TransitionRulesModal.vue';
 import TicketDetailModal from '../Tickets/TicketDetailModal.vue';
+import { MoreFilled } from '@element-plus/icons-vue';
 
 export default {
   name: 'BoardDetailsPage',
@@ -116,7 +118,8 @@ export default {
     CreateTicketModal,
     MoveTicketDraggable,
     TransitionRulesModal,
-    TicketDetailModal
+    TicketDetailModal,
+    MoreFilled
   },
   data() {
     return {
@@ -195,6 +198,13 @@ export default {
       }
     },
 
+    handleColumnCommand(command, column) {
+    if (command === 'delete') {
+      this.deleteColumn(column.columnId);
+    } else if (command === 'sort') {
+      this.sortTicketsByDate(column);
+    }
+    },
       async openTicketDetail(ticketId) {
       const token = localStorage.getItem('accessToken');
       try {
@@ -367,5 +377,34 @@ toggleColumnMenu(columnId) {
   cursor: pointer;
 }
 
+.columns-wrapper {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.column-card {
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 1;
+  color: #909399;
+  transition: color 0.3s;
+}
+
+.dropdown-icon:hover {
+  color: #409EFF; /* основной цвет Element Plus */
+}
 
 </style>
