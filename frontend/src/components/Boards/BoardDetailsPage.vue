@@ -4,15 +4,21 @@
 
     <el-skeleton :loading="loading" animated>
       <template #default>
-        <el-card shadow="always">
-          <div class="board-header">
-            <h2>{{ board.boardName }}</h2>
-            <div class="actions">
-              <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
-              <el-button v-if="isCreator" type="info" @click="showRulesModal = true">+ Configure Transition Rules</el-button>
-            </div>
+        <el-card shadow="always" class="board-card">
+        <div class="board-title">{{ board.boardName }}</div>
+
+        <div class="board-header">
+          <div class="actions">
+            <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
+            <el-button v-if="isCreator" type="info" @click="showRulesModal = true">+ Configure Transition Rules</el-button>
           </div>
-        </el-card>
+        </div>
+      </el-card>
+
+      <div class="back-button" @click="goBack">
+        <el-icon><ArrowLeft /></el-icon>
+        <span>Back</span>
+      </div>
 
         <CreateColumnModal
           v-if="showModal"
@@ -36,6 +42,7 @@
             class="column"
             shadow="hover"
           >
+          <h3 style="margin-bottom: 10px;">{{ column.columnName }}</h3>
 
 
           <div style="position: relative; width: 100%; height: 100%;">
@@ -133,6 +140,8 @@ export default {
       selectedColumnId: null,
       openMenuId: null,
       selectedTicketId: null,
+      selectedTicket: null,
+    showTicketDetailModal: false,
       showRulesModal: false,
       openTicketMenuId: null
     };
@@ -197,6 +206,11 @@ export default {
         this.columns = [];
       }
     },
+
+    goBack() {
+      this.$router.back()
+  },
+  },
 
     handleColumnCommand(command, column) {
     if (command === 'delete') {
@@ -288,7 +302,7 @@ toggleColumnMenu(columnId) {
       this.showTicketModal = false;
     }
   }
-};
+;
 </script>
 
 
@@ -406,5 +420,19 @@ toggleColumnMenu(columnId) {
 .dropdown-icon:hover {
   color: #409EFF; /* основной цвет Element Plus */
 }
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #0079bf;
+  font-weight: 500;
+  margin-bottom: 16px;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+
 
 </style>

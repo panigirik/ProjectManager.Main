@@ -1,0 +1,27 @@
+/* src/assets/global.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.el-card {
+  border-radius: 12px;
+}
+
+.el-button {
+  border-radius: 8px;
+}
+
+.el-input__inner {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.el-dialog {
+  background-color: #2c2c2c;
+  color: #fff;
+}

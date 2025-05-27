@@ -1,7 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Net.Mail;
+using AutoMapper;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
 using ProjectManager.Application.RequestsDTOs;
+using ProjectManager.Application.ValidationInterfaces;
 using ProjectManager.Domain.Entities;
 using ProjectManager.Domain.Enums;
 using ProjectManager.Domain.Interfaces;
@@ -15,16 +17,20 @@ namespace ProjectManager.Application.Services
         private readonly IMapper _mapper;
         private readonly IDropBoxClient _dropBoxClient;
         private readonly ITicketTransitionRuleRepository _ticketTransitionRuleRepository;
+        private readonly IFileValidationService _fileValidationService;
 
         public TicketService(ITicketRepository ticketRepository,
             IMapper mapper,
             IDropBoxClient dropBoxClient,
-            ITicketTransitionRuleRepository ticketTransitionRuleRepository)
+            ITicketTransitionRuleRepository ticketTransitionRuleRepository,
+            IFileValidationService fileValidationService
+            )
         {
             _ticketRepository = ticketRepository;
             _mapper = mapper;
             _dropBoxClient = dropBoxClient;
             _ticketTransitionRuleRepository = ticketTransitionRuleRepository;
+            _fileValidationService = fileValidationService;
         }
 
         public async Task<IEnumerable<GetTicketRequest>> GetAllAsync()
@@ -63,18 +69,42 @@ namespace ProjectManager.Application.Services
             }
             
             var ticket = _mapper.Map<Ticket>(ticketRequest);
-            ticket.Attachments = uploadedUrls.ToArray();
+            ticket.Attachments = uploadedUrls;
             await _ticketRepository.CreateAsync(ticket);
             return ticket;
         }
 
 
-
         public async Task UpdateAsync(UpdateTicketRequest ticketRequest)
         {
-            var ticket = _mapper.Map<Ticket>(ticketRequest);
+            var ticket = await _ticketRepository.GetByIdAsync(ticketRequest.TicketId);
+            if (ticket == null)
+                throw new KeyNotFoundException("Ticket not found");
+
+            ticket.Title = ticketRequest.Title;
+            ticket.Description = ticketRequest.Description;
+            ticket.AssignedUserName = ticketRequest.AssignedUserName;
+            ticket.ColumnId = ticketRequest.ColumnId;
+
+            if (ticketRequest.Attachments != null && ticketRequest.Attachments.Any())
+            {
+                // Проверка файлов (можно оставить внутри сервиса)
+                await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
+
+                if (ticket.Attachments == null)
+                    ticket.Attachments = new List<string>();
+
+                foreach (var file in ticketRequest.Attachments)
+                {
+                    var filePath = $"/tickets/{ticket.TicketId}/{file.FileName}";
+                    var link = await _dropBoxClient.UploadFileAsync(file, filePath);
+                    ticket.Attachments.Add(link);
+                }
+            }
+
             await _ticketRepository.UpdateAsync(ticket);
         }
+
 
         public async Task MoveToColumnAsync(MoveTicketRequest request)
         {
@@ -96,7 +126,7 @@ namespace ProjectManager.Application.Services
                 if (validations != TransitionValidationType.None)
                 {
                     bool hasAttachment = (request.Attachments?.Length > 0) ||
-                                         (ticket.Attachments?.Length > 0);
+                                         (ticket.Attachments?.ToArray().Length > 0);
 
                     bool hasCommitLink = !string.IsNullOrWhiteSpace(request.CommitLink) ||
                                          (!string.IsNullOrWhiteSpace(ticket.Description) &&
@@ -128,7 +158,7 @@ namespace ProjectManager.Application.Services
                     uploadedUrls.Add(uploadedUrl);
                 }
 
-                ticket.Attachments = uploadedUrls.ToArray();
+                ticket.Attachments = uploadedUrls;
             }
             
             ticket.ColumnId = request.NewColumnId;

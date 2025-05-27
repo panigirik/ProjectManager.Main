@@ -31,7 +31,8 @@ namespace Application.Tests.ServicesTests.TicketServiceHandlerTests
                 _ticketRepositoryMock.Object,
                 mapper,
                 _dropBoxClientMock.Object,
-                _ticketTransitionRuleRepositoryMock.Object
+                _ticketTransitionRuleRepositoryMock.Object,
+                null
             );
         }
 

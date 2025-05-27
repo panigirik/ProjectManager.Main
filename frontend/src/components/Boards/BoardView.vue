@@ -1,46 +1,99 @@
 <template>
-    <div class="dashboard">
+  <div class="dashboard">
+    <div class="header">
       <h1>Your Boards</h1>
-      <div v-if="loading">Loading boards...</div>
-      <div v-else>
-        <div v-if="boards.length > 0" class="board-list">
-          <el-card
-            v-for="board in boards"
-            :key="board.boardId"
-            class="board-item"
-            @click="openBoard(board.boardId)"
-          >
-            <strong>{{ board.boardName }}</strong><br />
-            <span>{{ board.columnIds.length }} columns</span>
-          </el-card>
-        </div>
-        <div v-else>
-          <p>You don't have any boards yet.</p>
-        </div>
-      </div>
+      <el-button type="primary" icon="Plus" @click="showAddBoardDialog = true">
+        Add New Board
+      </el-button>
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    name: 'MainDashboard',
-    data() {
-      return {
-        boards: [],
-        loading: true
-      };
-    },
-    async created() {
+
+    <!-- Загрузка -->
+    <el-skeleton v-if="loading" animated :rows="4" />
+
+    <!-- Список досок -->
+    <el-row
+      v-else-if="boards.length > 0"
+      :gutter="20"
+      class="board-list"
+      justify="start"
+    >
+      <el-col
+        v-for="board in boards"
+        :key="board.boardId"
+        :span="6"
+        class="board-col"
+      >
+        <el-card
+          shadow="hover"
+          class="board-item"
+          @click="openBoard(board.boardId)"
+        >
+          <template #header>
+            <div class="card-header">
+              <el-icon><FolderOpened /></el-icon>
+              <span class="board-title">{{ board.boardName }}</span>
+            </div>
+          </template>
+          <div class="card-content">
+            <el-tag type="info">{{ board.columnIds.length }} columns</el-tag>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <!-- Если досок нет -->
+    <div v-else class="no-boards">
+      <el-empty description="You don't have any boards yet." />
+    </div>
+
+    <!-- Диалог добавления доски -->
+    <el-dialog v-model="showAddBoardDialog" title="Create New Board" width="30%">
+      <el-form :model="newBoard" label-position="top">
+        <el-form-item label="Board Name">
+          <el-input v-model="newBoard.boardName" placeholder="Enter board name" />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="showAddBoardDialog = false">Cancel</el-button>
+        <el-button type="primary" @click="createBoard">Create</el-button>
+      </template>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
+import { FolderOpened, Plus } from '@element-plus/icons-vue';
+
+export default {
+  name: 'MainDashboard',
+  components: {
+    FolderOpened,
+    Plus
+  },
+  data() {
+    return {
+      boards: [],
+      loading: true,
+      showAddBoardDialog: false,
+      newBoard: {
+        boardName: ''
+      }
+    };
+  },
+  async created() {
+    await this.loadBoards();
+  },
+  methods: {
+    async loadBoards() {
       const token = localStorage.getItem('accessToken');
-  
       if (!token) {
-        this.$message.error('You must be logged in.');
+        ElMessage.error('You must be logged in.');
         this.$router.push('/login');
         return;
       }
-  
+
       try {
         const response = await axios.get('http://localhost:5258/api/Boards/column', {
           headers: {
@@ -49,35 +102,96 @@
         });
         this.boards = response.data;
       } catch (error) {
-        this.$message.error('Failed to load boards');
+        ElMessage.error('Failed to load boards');
       } finally {
         this.loading = false;
       }
     },
-    methods: {
-        openBoard(boardId) {
-        this.$router.push(`/boards/${boardId}`);
+    openBoard(boardId) {
+      this.$router.push(`/boards/${boardId}`);
+    },
+    async createBoard() {
+      const token = localStorage.getItem('accessToken');
+      if (!this.newBoard.boardName.trim()) {
+        ElMessage.warning('Board name is required');
+        return;
+      }
+
+      try {
+        const response = await axios.post(
+          'http://localhost:5258/api/Boards',
+          { boardName: this.newBoard.boardName },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+        this.boards.push(response.data);
+        ElMessage.success('Board created successfully');
+        this.showAddBoardDialog = false;
+        this.newBoard.boardName = '';
+      } catch (error) {
+        ElMessage.error('Failed to create board');
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  .dashboard {
-    padding: 2rem;
   }
-  
-  .board-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .board-item {
-    background: #f0f0f0;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+.dashboard {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #f0f0f0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.board-list {
+  margin-top: 1rem;
+}
+
+.board-col {
+  transition: transform 0.2s;
+}
+
+.board-col:hover {
+  transform: translateY(-5px);
+}
+
+.board-item {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #3a3a3a;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.board-title {
+  margin-left: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card-content {
+  margin-top: 0.5rem;
+}
+
+.no-boards {
+  margin-top: 2rem;
+  text-align: center;
+}
+</style>

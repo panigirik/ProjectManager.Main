@@ -14,13 +14,13 @@ public class Board
     public ObjectId Id { get; set; } 
     
     [BsonRepresentation(BsonType.String)]
-    public Guid BoardId { get; set; } 
+    public Guid? BoardId { get; set; } 
 
     [BsonRepresentation(BsonType.String)]
-    public Guid CreatorId { get; set; } 
+    public Guid? CreatorId { get; set; } 
     
     public string BoardName { get; set; }
     
     [BsonRepresentation(BsonType.String)]
-    public List<Guid> ColumnIds { get; set; } = new();
+    public List<Guid>? ColumnIds { get; set; } = new();
 }

@@ -44,8 +44,9 @@ public class BoardService : IBoardService
 
     public async Task CreateAsync(BoardDto boardDto)
     {
+        boardDto.BoardId = Guid.NewGuid();
+        boardDto.CreatorId = _userHelperService.GetCurrentUser().UserId;
         var board = _mapper.Map<Board>(boardDto);
-        
         await _boardRepository.CreateAsync(board);
     }
 

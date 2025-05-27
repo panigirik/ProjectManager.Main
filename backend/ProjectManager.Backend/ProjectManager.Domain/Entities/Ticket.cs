@@ -25,5 +25,6 @@ public class Ticket
     [BsonRepresentation(BsonType.String)]
     public Guid ColumnId { get; set; } 
     
-    public string[]? Attachments { get; set; } 
+    public List<string> Attachments { get; set; } = new List<string>();
+
 }

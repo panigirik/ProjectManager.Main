@@ -30,10 +30,8 @@ public class DropBoxClient : IDropBoxClient
 
     public async Task<string> GetFileLinkAsync(string filePath)
     {
-        var sharedLinkMetadata = await _client.Sharing.CreateSharedLinkWithSettingsAsync(filePath);
-
-        // Преобразуем ссылку, чтобы сразу загружался файл
-        return sharedLinkMetadata.Url.Replace("?dl=0", "?dl=1");
+        var temporalyLink = await _client.Files.GetTemporaryLinkAsync(filePath);
+        return temporalyLink.Link;
     }
 
     public async Task DeleteFileAsync(string filePath)

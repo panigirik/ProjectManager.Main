@@ -20,8 +20,12 @@ public class TicketMappingProfile: Profile
 
         CreateMap<Ticket, GetTicketRequest>();
 
-        CreateMap<Ticket, CreateTicketRequest>().ReverseMap();
+        CreateMap<Ticket, CreateTicketRequest>().ReverseMap()
+            .ForMember(dest => dest.Attachments, 
+                opt => opt.Ignore());
 
-        CreateMap<Ticket, UpdateTicketRequest>().ReverseMap();
+        CreateMap<Ticket, UpdateTicketRequest>().ReverseMap()
+            .ForMember(dest => dest.Attachments,
+                opt => opt.Ignore());
     }
 }

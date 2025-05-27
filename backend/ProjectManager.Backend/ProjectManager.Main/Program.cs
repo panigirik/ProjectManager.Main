@@ -5,7 +5,8 @@ using ProjectManager.Main.ExceptionsHandling;
 using ProjectManager.Persistence.Extensions;
 using ProjectManager.ValidationServices.Extensions;
 using Serilog;
-
+using Prometheus;
+    
 namespace ProjectManager.Main
 {
     public class Program
@@ -21,6 +22,7 @@ namespace ProjectManager.Main
                     .ReadFrom.Services(services)
                     .Enrich.FromLogContext();
             });
+            builder.WebHost.UseUrls("http://0.0.0.0:5258");
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddCoreApplicationServices();
             builder.Services.AddControllersWithViews();
@@ -31,7 +33,6 @@ namespace ProjectManager.Main
             builder.Services.AddSwaggerAuthentication();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAllOrigins",
@@ -40,8 +41,25 @@ namespace ProjectManager.Main
                         .AllowAnyHeader());
             });
             
+            
+            
             var app = builder.Build();
+
             app.UseSerilogRequestLogging();
+
+            app.UseRouting();
+
+            app.UseHttpMetrics(); // <-- после Routing, до Endpoints
+            app.UseCors("AllowAllOrigins");
+            app.UseAuthorization();
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapMetrics(); // /metrics
+            });
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -51,16 +69,9 @@ namespace ProjectManager.Main
                     options.RoutePrefix = string.Empty;
                 });
             }
-
-            //app.UseHttpsRedirection();
-            //app.UseStaticFiles();
-            app.MapControllers();
-            app.UseCors("AllowAllOrigins");
-            app.UseMiddleware<ExceptionHandlerMiddleware>();
-            app.UseRouting();
-            app.UseAuthorization();
-
+            Metrics.SuppressDefaultMetrics(); 
             app.Run();
+
         }
     }
 }
