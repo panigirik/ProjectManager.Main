@@ -1,4 +1,5 @@
 ﻿using System.Net.Mail;
+using System.Runtime.InteropServices;
 using AutoMapper;
 using ProjectManager.Application.DTOs;
 using ProjectManager.Application.Interfaces;
@@ -52,6 +53,25 @@ namespace ProjectManager.Application.Services
             return _mapper.Map<List<TicketDto>>(tickets);
         }
 
+        public async Task<List<string>> GetAttachmentsPathsAsync(Guid ticketId)
+        {
+            // Получаем тикет из базы (предполагается, что есть репозиторий или DbContext)
+            var ticket = await _ticketRepository.GetByIdAsync(ticketId);
+            if (ticket == null)
+                throw new ArgumentException($"Тикет с Id {ticketId} не найден.");
+
+            // Получаем список путей вложений (пусть это List<string>)
+            var attachmentsPaths = ticket.Attachments; // Например, List<string> путей к файлам в Dropbox
+
+            if (attachmentsPaths == null || !attachmentsPaths.Any())
+                return new List<string>();
+
+            // Вызываем метод DropBoxClient для получения временных ссылок
+            var temporaryLinks = await _dropBoxClient.GetAttachmentsPathsAsync(ticketId);
+
+            return temporaryLinks;
+        }
+
         
         public async Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest)
         {
@@ -88,7 +108,6 @@ namespace ProjectManager.Application.Services
 
             if (ticketRequest.Attachments != null && ticketRequest.Attachments.Any())
             {
-                // Проверка файлов (можно оставить внутри сервиса)
                 await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
 
                 if (ticket.Attachments == null)
@@ -97,7 +116,10 @@ namespace ProjectManager.Application.Services
                 foreach (var file in ticketRequest.Attachments)
                 {
                     var filePath = $"/tickets/{ticket.TicketId}/{file.FileName}";
+
+                    // Загружаем файл и получаем ссылку
                     var link = await _dropBoxClient.UploadFileAsync(file, filePath);
+
                     ticket.Attachments.Add(link);
                 }
             }

@@ -90,4 +90,15 @@ export default {
   font-size: 14px;
   color: #409EFF;
 }
+
+.el-input__inner {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ccc;
+}
+
+.el-form-item__label {
+  color: #000000 !important;
+}
+
 </style>

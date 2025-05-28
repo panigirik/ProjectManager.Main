@@ -1,6 +1,10 @@
 <template>
   <div class="modal-backdrop" @click.self="$emit('close')">
     <div class="modal-window">
+
+ 
+
+
       <header class="modal-header">
         <h3>Редактирование тикета</h3>
         <button class="close-btn" @click="$emit('close')">×</button>
@@ -31,6 +35,13 @@
               <input type="file" multiple @change="handleFileChange" />
             </label>
 
+            <!-- модалка для полного изображения -->
+            <div v-if="selectedImage" class="image-modal" @click="selectedImage = null">
+              <img :src="selectedImage" class="full-image" @click.stop />
+              <button class="close-full-image" @click="selectedImage = null">×</button>
+            </div>
+
+
             <div v-if="ticket.attachments && ticket.attachments.length">
               <p><strong>Вложения (изображения):</strong></p>
               <div class="thumbnail-list">
@@ -45,9 +56,17 @@
             </div>
 
             <footer class="modal-footer">
-              <button type="submit">Сохранить</button>
-              <button type="button" @click="$emit('close')">Отмена</button>
-            </footer>
+            <button type="submit">Сохранить</button>
+            <button type="button" @click="$emit('close')">Отмена</button>
+            <button
+              type="button"
+              class="delete-circle-inside"
+              @click="confirmDeleteTicket"
+              title="Удалить тикет"
+            >
+              Удалить
+            </button>
+          </footer>
           </form>
         </div>
       </section>
@@ -58,6 +77,7 @@
 <script>
 import axios from "axios";
 import { getDropboxTemporaryLink } from "@/dropboxClient";
+import { ElMessage } from "element-plus"; // Если используешь Element Plus
 
 export default {
   name: "TicketDetailModal",
@@ -78,7 +98,8 @@ export default {
         assignedUserName: "",
       },
       newFiles: [],
-      ticketImageLinks: [], // Ссылки на изображения из Dropbox
+      ticketImageLinks: [],
+      nullselectedImage: null // Ссылки на изображения из Dropbox
     };
   },
   methods: {
@@ -102,16 +123,23 @@ export default {
         this.form.assignedUserName = response.data.assignedUserName;
 
         if (response.data.attachments && response.data.attachments.length) {
-          // Получаем временные ссылки на изображения
-          const imageLinks = await Promise.all(
-            response.data.attachments.map((path) =>
-              getDropboxTemporaryLink(path)
-            )
+        const token = localStorage.getItem("accessToken");
+        try {
+          const linksResponse = await axios.get(
+            `http://localhost:5258/api/Tickets/ticket/${this.ticketId}/attachments/links`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
           );
-          this.ticketImageLinks = imageLinks.filter((link) => !!link);
-        } else {
+          this.ticketImageLinks = linksResponse.data;
+        } catch (err) {
+          console.error("Ошибка при получении ссылок на вложения:", err);
           this.ticketImageLinks = [];
         }
+      } else {
+        this.ticketImageLinks = [];
+      }
+
       } catch (err) {
         console.error("Ошибка при загрузке тикета:", err);
         this.error = "Не удалось загрузить данные тикета.";
@@ -128,8 +156,9 @@ export default {
     },
 
     openImage(link) {
-      window.open(link, "_blank");
+      this.selectedImage = link;
     },
+
 
     async submitForm() {
       const formData = new FormData();
@@ -177,6 +206,32 @@ export default {
         alert("Не удалось сохранить изменения.");
       }
     },
+
+    async deleteTicket() {
+        try {
+          const token = localStorage.getItem("accessToken");
+          await axios.delete(`http://localhost:5258/api/Tickets/ticket/${this.ticketId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          ElMessage.success("Тикет успешно удалён.");
+          this.$emit("deleted", this.ticketId); // уведомляем родителя, что тикет удалён
+          this.$emit("close"); // закрываем модалку
+        } catch (err) {
+          console.error("Ошибка при удалении тикета:", err);
+          ElMessage.error("Не удалось удалить тикет.");
+        }
+      },
+
+      confirmDeleteTicket() {
+        if (confirm("Вы уверены, что хотите удалить этот тикет?")) {
+          this.deleteTicket();
+        }
+      },
+
+
   },
   mounted() {
     this.fetchTicket();
@@ -199,18 +254,33 @@ export default {
     z-index: 1000;
   }
 
-  .modal-window {
-  background: white;
-  border-radius: 12px;
-  width: 90%;
-  height: 90%;
-  max-width: 1200px;
-  max-height: 800px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-}
+    .modal-window {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    height: 90%;
+    max-width: 1200px;
+    max-height: 800px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .delete-circle-inside {
+    margin-left: 16px;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .delete-circle-inside:hover {
+    background-color: #d9363e;
+  }
 
 
   .modal-header {
@@ -288,6 +358,56 @@ export default {
   transform: scale(1.1);
 }
 
+.thumbnail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
 
-  </style>
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.full-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000;
+}
+
+.close-full-image {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  font-size: 32px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+</style>
+
+
   

@@ -87,4 +87,15 @@ export default {
   border-radius: 8px;
   background-color: #fff;
 }
+
+.el-input__inner {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ccc;
+}
+
+.el-form-item__label {
+  color: #000000 !important;
+}
+
 </style>

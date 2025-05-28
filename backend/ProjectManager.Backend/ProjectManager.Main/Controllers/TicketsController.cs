@@ -75,6 +75,15 @@ public class TicketsController : ControllerBase
         return NoContent();
     }
     
+    [HttpGet("ticket/{ticketId}/attachments/links")]
+    public async Task<IActionResult> GetTicketAttachmentLinks(Guid ticketId)
+    {
+        var links = await _ticketService.GetAttachmentsPathsAsync(ticketId);
+
+        return Ok(links);
+    }
+
+    
     [HttpPut("move-ticket")]
     public async Task<IActionResult> MoveTicket([FromBody] MoveTicketRequest request)
     {

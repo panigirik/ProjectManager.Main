@@ -10,6 +10,9 @@ public interface ITicketService
     Task<TicketDto> GetByIdAsync(Guid id);
 
     Task<List<TicketDto>> GetTicketsByColumnIdAsync(Guid columnId);
+
+    Task<List<string>> GetAttachmentsPathsAsync(Guid ticketId);
+    
     Task<Ticket> CreateTicketAsync(CreateTicketRequest ticketRequest);
     Task UpdateAsync(UpdateTicketRequest ticketRequest);
 

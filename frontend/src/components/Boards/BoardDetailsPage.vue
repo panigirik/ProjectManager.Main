@@ -5,20 +5,21 @@
     <el-skeleton :loading="loading" animated>
       <template #default>
         <el-card shadow="always" class="board-card">
-        <div class="board-title">{{ board.boardName }}</div>
+          <div class="board-title" v-if="board">{{ board.boardName }}</div>
 
-        <div class="board-header">
-          <div class="actions">
-            <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
-            <el-button v-if="isCreator" type="info" @click="showRulesModal = true">+ Configure Transition Rules</el-button>
+
+          <div class="board-header">
+            <div class="actions">
+              <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
+              <el-button v-if="isCreator" type="info" @click="showRulesModal = true">+ Configure Transition Rules</el-button>
+            </div>
           </div>
-        </div>
-      </el-card>
+        </el-card>
 
-      <div class="back-button" @click="goBack">
-        <el-icon><ArrowLeft /></el-icon>
-        <span>Back</span>
-      </div>
+        <div class="back-button" @click="goBack">
+          <el-icon><ArrowLeft /></el-icon>
+          <span>Back</span>
+        </div>
 
         <CreateColumnModal
           v-if="showModal"
@@ -42,28 +43,22 @@
             class="column"
             shadow="hover"
           >
-          <h3 style="margin-bottom: 10px;">{{ column.columnName }}</h3>
+            <!-- Заголовок колонки с меню -->
+            <div class="column-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="margin: 0;">{{ column.columnName }}</h3>
 
-
-          <div style="position: relative; width: 100%; height: 100%;">
-    <el-dropdown 
-      trigger="click" 
-      @command="cmd => handleColumnCommand(cmd, column)"
-      style="position: absolute; top: 0; right: 0;"
-    >
-      <span class="dropdown-icon">
-        <el-icon><MoreFilled /></el-icon>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item command="delete">Delete Column</el-dropdown-item>
-          <el-dropdown-item command="sort">Sort Tickets by Date</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
-  </div>
-
-
+              <el-dropdown trigger="click" @command="cmd => handleColumnCommand(cmd, column)">
+                <span class="dropdown-icon" style="cursor: pointer;">
+                  <el-icon><MoreFilled /></el-icon>
+                </span>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item command="delete">Delete Column</el-dropdown-item>
+                    <el-dropdown-item command="sort">Sort Tickets by Date</el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+            </div>
 
             <el-empty v-if="!column.tickets || column.tickets.length === 0" description="No tickets" />
 
@@ -74,7 +69,6 @@
               @ticketMoved="loadColumns"
             />
 
-            
             <TicketCard
               v-for="ticket in column.tickets"
               :key="ticket.ticketId"
@@ -89,7 +83,8 @@
               @close="closeTicketDetailModal"
             />
 
-            <el-button type="success" icon="el-icon-plus" @click="openTicketModal(column.columnId)" plain>
+            <el-button type="success" @click="openTicketModal(column.columnId)" plain>
+              <el-icon><Plus /></el-icon>
               Add Ticket
             </el-button>
 
@@ -117,6 +112,7 @@ import MoveTicketDraggable from '../Tickets/MoveTicketDraggable.vue';
 import TransitionRulesModal from '../Tickets/TransitionRulesModal.vue';
 import TicketDetailModal from '../Tickets/TicketDetailModal.vue';
 import { MoreFilled } from '@element-plus/icons-vue';
+
 
 export default {
   name: 'BoardDetailsPage',
@@ -207,11 +203,6 @@ export default {
       }
     },
 
-    goBack() {
-      this.$router.back()
-  },
-  },
-
     handleColumnCommand(command, column) {
     if (command === 'delete') {
       this.deleteColumn(column.columnId);
@@ -219,6 +210,31 @@ export default {
       this.sortTicketsByDate(column);
     }
     },
+
+    async deleteColumn(columnId) {
+      const token = localStorage.getItem('accessToken');
+      try {
+        await axios.delete(`http://localhost:5258/api/Columns/column/${columnId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        await this.loadColumns();
+      } catch (error) {
+        console.error("Error deleting column:", error);
+      }
+    },
+
+    
+    openTicketModal(columnId) {
+      this.selectedColumnId = columnId;
+      this.showTicketModal = true;
+    },
+
+    goBack() {
+      this.$router.back()
+  },
+  },
+
+
       async openTicketDetail(ticketId) {
       const token = localStorage.getItem('accessToken');
       try {
@@ -259,17 +275,7 @@ export default {
   }
 },
 
-async deleteColumn(columnId) {
-  const token = localStorage.getItem('accessToken');
-  try {
-    await axios.delete(`http://localhost:5258/api/Columns/column/${columnId}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    await this.loadColumns();
-  } catch (error) {
-    console.error("Error deleting column:", error);
-  }
-},
+
 
   toggleTicketMenu(ticketId) {
     this.openTicketMenuId = this.openTicketMenuId === ticketId ? null : ticketId;
@@ -287,15 +293,12 @@ async deleteColumn(columnId) {
   },
 
 
-toggleColumnMenu(columnId) {
-  this.openMenuId = this.openMenuId === columnId ? null : columnId;
-},
+    toggleColumnMenu(columnId) {
+    this.openMenuId = this.openMenuId === columnId ? null : columnId;
+  },
 
 
-    openTicketModal(columnId) {
-      this.selectedColumnId = columnId;
-      this.showTicketModal = true;
-    },
+
 
     async refreshColumn() {
       await this.loadColumns();
