@@ -66,11 +66,7 @@ public class TicketsController : ControllerBase
         {
             return BadRequest("Ticket data is null.");
         }
-
-        if (ticketRequest.Attachments != null)
-        {
-            await _fileValidationService.ValidateFilesAsync(ticketRequest.Attachments);
-        }
+        
         await _ticketService.UpdateAsync(ticketRequest);
         return NoContent();
     }

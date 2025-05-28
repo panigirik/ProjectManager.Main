@@ -21,7 +21,7 @@ namespace Application.Tests.ServicesTests.ColumnServiceHandlerTests
                 cfg.AddProfile(new MappingProfile());
             });
             var mapper = mockMapper.CreateMapper();
-            _service = new ColumnService(_columnRepositoryMock.Object, mapper);
+            _service = new ColumnService(_columnRepositoryMock.Object, null,  mapper);
         }
 
         [Fact]

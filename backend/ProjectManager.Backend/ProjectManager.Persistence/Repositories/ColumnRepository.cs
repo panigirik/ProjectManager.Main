@@ -42,12 +42,14 @@ public class ColumnRepository: IColumnRepository
             .Set(c => c.ColumnId, column.ColumnId)
             .Set(c => c.TicketIds, column.TicketIds)
             .Set(c => c.BoardId, column.BoardId);
-
+        
         var result = await _columnDbContext.Columns.UpdateOneAsync(
             c => c.ColumnId == column.ColumnId,
             update,
             cancellationToken: CancellationToken.None
         );
+        
+
         
         if (result.MatchedCount == 0)
             throw new InvalidOperationException("Column with specified ColumnId not found.");

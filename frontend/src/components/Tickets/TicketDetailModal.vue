@@ -25,10 +25,19 @@
               <textarea v-model="form.description" required></textarea>
             </label>
 
+
             <label>
-              Назначено:
-              <input v-model="form.assignedUserName" />
-            </label>
+            Назначено:
+            <div v-if="form.assignedUserId">Выбран: {{ selectedAssignedUserName }}</div>
+            <select v-model="form.assignedUserId">
+              <option value="">-- Не назначено --</option>
+              <option v-for="user in users" :key="user.userId" :value="user.userId">
+                {{ user.userName }}
+              </option>
+            </select>
+          </label>
+
+
 
             <label>
               Вложения:
@@ -74,10 +83,11 @@
   </div>
 </template>
 
+
 <script>
 import axios from "axios";
 import { getDropboxTemporaryLink } from "@/dropboxClient";
-import { ElMessage } from "element-plus"; // Если используешь Element Plus
+import { ElMessage } from "element-plus";
 
 export default {
   name: "TicketDetailModal",
@@ -95,17 +105,44 @@ export default {
       form: {
         title: "",
         description: "",
+        assignedUserId: "",
         assignedUserName: "",
+        columnId: "",
       },
+      users: [],
       newFiles: [],
       ticketImageLinks: [],
-      nullselectedImage: null // Ссылки на изображения из Dropbox
+      selectedImage: null,
     };
   },
+
+  computed: {
+    selectedAssignedUserName() {
+      const user = this.users.find(u => u.userId === this.form.assignedUserId);
+      return user ? user.userName : "";
+    },
+  },
+
   methods: {
+    async fetchUsers() {
+      try {
+        const token = localStorage.getItem("accessToken");
+        const response = await axios.get("http://localhost:5258/api/Users/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        this.users = response.data;
+      } catch (err) {
+        console.error("Ошибка при загрузке пользователей:", err);
+        this.users = [];
+      }
+    },
+
     async fetchTicket() {
       this.loading = true;
       this.error = null;
+
       try {
         const token = localStorage.getItem("accessToken");
         const response = await axios.get(
@@ -117,40 +154,43 @@ export default {
           }
         );
 
-        this.ticket = response.data;
-        this.form.title = response.data.title;
-        this.form.description = response.data.description;
-        this.form.assignedUserName = response.data.assignedUserName;
+        const ticketData = response.data;
+        this.ticket = ticketData;
 
-        if (response.data.attachments && response.data.attachments.length) {
-        const token = localStorage.getItem("accessToken");
-        try {
-          const linksResponse = await axios.get(
-            `http://localhost:5258/api/Tickets/ticket/${this.ticketId}/attachments/links`,
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          this.ticketImageLinks = linksResponse.data;
-        } catch (err) {
-          console.error("Ошибка при получении ссылок на вложения:", err);
+        this.form.title = ticketData.title;
+        this.form.description = ticketData.description;
+        this.form.assignedUserId = ticketData.assignedUserId;
+        this.form.columnId = ticketData.columnId || "";
+
+        const assignedUser = this.users.find(u => u.userId === ticketData.assignedUserId);
+        this.form.assignedUserName = assignedUser ? assignedUser.userName : "";
+
+        if (ticketData.attachments && ticketData.attachments.length) {
+          try {
+            const linksResponse = await axios.get(
+              `http://localhost:5258/api/Tickets/ticket/${this.ticketId}/attachments/links`,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+              }
+            );
+            this.ticketImageLinks = linksResponse.data;
+          } catch (err) {
+            console.error("Ошибка при получении ссылок на вложения:", err);
+            this.ticketImageLinks = [];
+          }
+        } else {
           this.ticketImageLinks = [];
         }
-      } else {
-        this.ticketImageLinks = [];
-      }
-
       } catch (err) {
-        console.error("Ошибка при загрузке тикета:", err);
-        this.error = "Не удалось загрузить данные тикета.";
+        console.error("Ошибка при загрузке тикета:", err.response?.data || err.message);
+        alert("Не удалось загрузить тикет.");
       } finally {
         this.loading = false;
       }
     },
 
     handleFileChange(event) {
-      // Фильтруем только изображения
-      this.newFiles = Array.from(event.target.files).filter((file) =>
+      this.newFiles = Array.from(event.target.files).filter(file =>
         file.type.startsWith("image/")
       );
     },
@@ -159,42 +199,50 @@ export default {
       this.selectedImage = link;
     },
 
-
     async submitForm() {
-      const formData = new FormData();
-      formData.append("TicketId", this.ticketId);
-      formData.append("Title", this.form.title);
-      formData.append("Description", this.form.description);
-      formData.append("AssignedUserName", this.form.assignedUserName);
-      formData.append("ColumnId", this.ticket.columnId);
+      const assignedUserName = this.selectedAssignedUserName;
 
-      this.newFiles.forEach((file) => {
-        formData.append("Attachments", file);
-      });
+      if (!assignedUserName) {
+        alert("Поле AssignedUserName обязательно для заполнения.");
+        return;
+      }
 
       try {
-        const token = localStorage.getItem("accessToken");
-        const response = await axios.put(
-          "http://localhost:5258/api/Tickets/ticket",
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const formData = new FormData();
 
-        // Обновляем локальный тикет и ссылки после успешного обновления
-        this.ticket = response.data;
+        formData.append("TicketId", this.ticketId);
+        formData.append("Title", this.form.title || "");
+        formData.append("Description", this.form.description || "");
+        formData.append("AssignedUserName", assignedUserName);
+
+        if (this.form.columnId) {
+          formData.append("ColumnId", this.form.columnId);
+        }
+
+        if (this.newFiles.length > 0) {
+          this.newFiles.forEach(file => {
+            formData.append("Attachments", file);
+          });
+        }
+
+        const token = localStorage.getItem("accessToken");
+
+        await axios.put("http://localhost:5258/api/Tickets/ticket", formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        this.ticket.title = this.form.title;
+        this.ticket.description = this.form.description;
+        this.ticket.assignedUserName = assignedUserName;
+        this.ticket.columnId = this.form.columnId;
 
         if (this.ticket.attachments && this.ticket.attachments.length) {
           const imageLinks = await Promise.all(
-            this.ticket.attachments.map((path) =>
-              getDropboxTemporaryLink(path)
-            )
+            this.ticket.attachments.map(path => getDropboxTemporaryLink(path))
           );
-          this.ticketImageLinks = imageLinks.filter((link) => !!link);
+          this.ticketImageLinks = imageLinks.filter(link => !!link);
         } else {
           this.ticketImageLinks = [];
         }
@@ -202,42 +250,44 @@ export default {
         this.newFiles = [];
         this.$emit("close");
       } catch (err) {
-        console.error("Ошибка при сохранении тикета:", err);
+        console.error("Ошибка при сохранении тикета:", err.response?.data || err.message);
         alert("Не удалось сохранить изменения.");
       }
     },
 
     async deleteTicket() {
-        try {
-          const token = localStorage.getItem("accessToken");
-          await axios.delete(`http://localhost:5258/api/Tickets/ticket/${this.ticketId}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+      try {
+        const token = localStorage.getItem("accessToken");
+        await axios.delete(`http://localhost:5258/api/Tickets/ticket/${this.ticketId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-          ElMessage.success("Тикет успешно удалён.");
-          this.$emit("deleted", this.ticketId); // уведомляем родителя, что тикет удалён
-          this.$emit("close"); // закрываем модалку
-        } catch (err) {
-          console.error("Ошибка при удалении тикета:", err);
-          ElMessage.error("Не удалось удалить тикет.");
-        }
-      },
+        ElMessage.success("Тикет успешно удалён.");
+        this.$emit("deleted", this.ticketId);
+        this.$emit("close");
+      } catch (err) {
+        console.error("Ошибка при удалении тикета:", err);
+        ElMessage.error("Не удалось удалить тикет.");
+      }
+    },
 
-      confirmDeleteTicket() {
-        if (confirm("Вы уверены, что хотите удалить этот тикет?")) {
-          this.deleteTicket();
-        }
-      },
-
-
+    confirmDeleteTicket() {
+      if (confirm("Вы уверены, что хотите удалить этот тикет?")) {
+        this.deleteTicket();
+      }
+    },
   },
+
   mounted() {
-    this.fetchTicket();
+    this.fetchUsers().then(() => {
+      this.fetchTicket();
+    });
   },
 };
 </script>
+
 
   
   <style scoped>

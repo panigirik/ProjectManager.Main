@@ -10,12 +10,15 @@ namespace ProjectManager.Application.Services
     public class ColumnService : IColumnService
     {
         private readonly IColumnRepository _columnRepository;
-        private readonly IMapper _mapper; 
+        private readonly IBoardRepository _boardRepository;
+        private readonly IMapper _mapper;
         
         public ColumnService(IColumnRepository columnRepository,
+            IBoardRepository boardRepository,
             IMapper mapper)
         {
             _columnRepository = columnRepository;
+            _boardRepository = boardRepository;
             _mapper = mapper;
         }
 
@@ -43,9 +46,16 @@ namespace ProjectManager.Application.Services
         {
             columnDto.ColumnId = Guid.NewGuid();
             var column = _mapper.Map<Column>(columnDto);
-            
             await _columnRepository.CreateAsync(column);
+            
+            var board = await _boardRepository.GetByIdAsync(column.BoardId);
+            if (board == null)
+                throw new InvalidOperationException("Board not found for column.");
+
+            board.ColumnIds.Add(column.ColumnId);
+            await _boardRepository.UpdateAsync(board);
         }
+
 
         public async Task UpdateAsync(UpdateColumnRequest updateColumnRequest)
         {
@@ -54,9 +64,24 @@ namespace ProjectManager.Application.Services
             await _columnRepository.UpdateAsync(column);
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid columnId)
         {
-            await _columnRepository.DeleteAsync(id);
+            var column = await _columnRepository.GetByIdAsync(columnId);
+            if (column == null)
+                throw new InvalidOperationException("Column not found.");
+
+            await _columnRepository.DeleteAsync(columnId);
+
+            // Удалим колонку из доски
+            var board = await _boardRepository.GetByIdAsync(column.BoardId);
+            if (board != null)
+            {
+                board.ColumnIds.Remove(columnId);
+                await _boardRepository.UpdateAsync(board);
+            }
         }
+
+        
+        
     }
 }
