@@ -87,7 +87,6 @@
 <script>
 import axios from "axios";
 import { getDropboxTemporaryLink } from "@/dropboxClient";
-import { ElMessage } from "element-plus";
 
 export default {
   name: "TicketDetailModal",
@@ -96,6 +95,10 @@ export default {
       type: String,
       required: true,
     },
+    columns: {
+    type: Array,
+    required: true,
+  }
   },
   data() {
     return {
@@ -255,29 +258,39 @@ export default {
       }
     },
 
-    async deleteTicket() {
-      try {
-        const token = localStorage.getItem("accessToken");
-        await axios.delete(`http://localhost:5258/api/Tickets/ticket/${this.ticketId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+    handleTicketDeleted(ticketId) {
+          // Пройтись по колонкам и удалить тикет
+          for (const column of this.columns) {
+            const index = column.tickets.findIndex(t => t.ticketId === ticketId);
+            if (index !== -1) {
+              column.tickets.splice(index, 1); // удалить тикет локально
+              break;
+            }
+          }
+        },
 
-        ElMessage.success("Тикет успешно удалён.");
-        this.$emit("deleted", this.ticketId);
-        this.$emit("close");
-      } catch (err) {
-        console.error("Ошибка при удалении тикета:", err);
-        ElMessage.error("Не удалось удалить тикет.");
-      }
-    },
+        async deleteTicket(ticketId) {
+          const token = localStorage.getItem('accessToken');
+          try {
+            await axios.delete(`http://localhost:5258/api/Tickets/ticket/${ticketId}`, {
+              headers: { Authorization: `Bearer ${token}` }
+            });
+
+            this.$emit('ticketDeleted', this.ticketId, this.columnId);
+            this.$emit('close');
+          } catch (error) {
+            console.error("Error deleting ticket:", error);
+          }
+        },
+
 
     confirmDeleteTicket() {
       if (confirm("Вы уверены, что хотите удалить этот тикет?")) {
-        this.deleteTicket();
+        this.deleteTicket(this.ticketId);
+        this.$emit('close'); // закрыть модалку после удаления
       }
     },
+
   },
 
   mounted() {

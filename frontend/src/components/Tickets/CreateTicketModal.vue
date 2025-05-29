@@ -84,7 +84,7 @@ export default {
           }
         });
 
-        this.$emit('ticketCreated');
+        this.$emit('ticketCreated', this.columnId); // ← передаём columnId в событие
         this.$emit('close');
       } catch (error) {
         console.error('Error creating ticket:', error);

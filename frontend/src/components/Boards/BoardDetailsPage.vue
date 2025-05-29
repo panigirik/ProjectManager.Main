@@ -7,7 +7,6 @@
         <el-card shadow="always" class="board-card">
           <div class="board-title" v-if="board">{{ board.boardName }}</div>
 
-
           <div class="board-header">
             <div class="actions">
               <el-button v-if="isCreator" type="primary" @click="showModal = true">+ Add Column</el-button>
@@ -77,25 +76,31 @@
               @openDeleteConfirmation="deleteTicket"
             />
 
-            <TicketDetailModal
-              v-if="showTicketDetailModal && selectedTicketId"
-              :ticketId="selectedTicketId"
-              @close="closeTicketDetailModal"
-            />
-
             <el-button type="success" @click="openTicketModal(column.columnId)" plain>
               <el-icon><Plus /></el-icon>
               Add Ticket
             </el-button>
 
+            <!-- Модалка создания тикета -->
             <CreateTicketModal
               v-if="showTicketModal && selectedColumnId === column.columnId"
               :columnId="column.columnId"
               @close="showTicketModal = false"
-              @ticketCreated="refreshColumn"
+              @ticketCreated="refreshColumn(column.columnId)"
             />
           </el-card>
         </div>
+
+        <!-- Модалка деталей тикета -->
+        <TicketDetailModal
+          v-if="showTicketDetailModal && selectedTicketId"
+          :ticketId="selectedTicketId"
+          :columns="columns"
+          @close="closeTicketDetailModal"
+          @ticketDeleted="refreshColumnAfterDelete"
+        />
+
+
       </template>
     </el-skeleton>
   </div>
@@ -112,7 +117,6 @@ import MoveTicketDraggable from '../Tickets/MoveTicketDraggable.vue';
 import TransitionRulesModal from '../Tickets/TransitionRulesModal.vue';
 import TicketDetailModal from '../Tickets/TicketDetailModal.vue';
 import { MoreFilled } from '@element-plus/icons-vue';
-
 
 export default {
   name: 'BoardDetailsPage',
@@ -137,7 +141,7 @@ export default {
       openMenuId: null,
       selectedTicketId: null,
       selectedTicket: null,
-    showTicketDetailModal: false,
+      showTicketDetailModal: false,
       showRulesModal: false,
       openTicketMenuId: null
     };
@@ -148,7 +152,8 @@ export default {
 
     try {
       const decoded = jwtDecode(token);
-      this.isCreator = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "creator";
+      this.isCreator =
+        decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "creator";
 
       const boardResponse = await axios.get(`http://localhost:5258/api/Boards/column/${boardId}`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -174,9 +179,10 @@ export default {
       const boardId = this.board.boardId;
 
       try {
-        const columnsResponse = await axios.get(`http://localhost:5258/api/Columns/columns/${boardId}`, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const columnsResponse = await axios.get(
+          `http://localhost:5258/api/Columns/columns/${boardId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
         let columns = columnsResponse.data;
 
@@ -186,29 +192,44 @@ export default {
           return;
         }
 
-        this.columns = await Promise.all(columns.map(async (column) => {
-          const ticketsResponse = await axios.get(
-            `http://localhost:5258/api/Tickets/column/${column.columnId}`,
-            { headers: { Authorization: `Bearer ${token}` } }
-          );
+        this.columns = await Promise.all(
+          columns.map(async (column) => {
+            const ticketsResponse = await axios.get(
+              `http://localhost:5258/api/Tickets/column/${column.columnId}`,
+              { headers: { Authorization: `Bearer ${token}` } }
+            );
 
-          return {
-            ...column,
-            tickets: Array.isArray(ticketsResponse.data) ? ticketsResponse.data : []
-          };
-        }));
+            return {
+              ...column,
+              tickets: Array.isArray(ticketsResponse.data) ? ticketsResponse.data : []
+            };
+          })
+        );
       } catch (error) {
         console.error("Error loading columns:", error);
         this.columns = [];
       }
     },
 
+    async fetchTickets() {
+      const token = localStorage.getItem('accessToken');
+      const boardId = this.$route.params.id;
+      try {
+        const response = await axios.get(`http://localhost:5258/api/Tickets/board/${boardId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        this.tickets = response.data;
+      } catch (error) {
+        console.error("Error fetching tickets:", error);
+      }
+    },
+
     handleColumnCommand(command, column) {
-    if (command === 'delete') {
-      this.deleteColumn(column.columnId);
-    } else if (command === 'sort') {
-      this.sortTicketsByDate(column);
-    }
+      if (command === 'delete') {
+        this.deleteColumn(column.columnId);
+      } else if (command === 'sort') {
+        this.sortTicketsByDate(column);
+      }
     },
 
     async deleteColumn(columnId) {
@@ -223,19 +244,16 @@ export default {
       }
     },
 
-    
     openTicketModal(columnId) {
       this.selectedColumnId = columnId;
       this.showTicketModal = true;
     },
 
     goBack() {
-      this.$router.back()
-  },
-  },
+      this.$router.back();
+    },
 
-
-      async openTicketDetail(ticketId) {
+    async openTicketDetail(ticketId) {
       const token = localStorage.getItem('accessToken');
       try {
         const response = await axios.get(
@@ -244,69 +262,85 @@ export default {
         );
         this.selectedTicket = response.data;
         this.showTicketDetailModal = true;
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error("Error opening ticket detail:", error);
       }
     },
+
     closeTicketDetailModal() {
       this.showTicketDetailModal = false;
       this.selectedTicket = null;
     },
 
-    async fetchTickets() {
-      const token = localStorage.getItem('accessToken');
-      const boardId = this.$route.params.id;
-      const response = await axios.get(`http://localhost:5258/api/Tickets/board/${boardId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      this.tickets = response.data;
+
+    toggleTicketMenu(ticketId) {
+      this.openTicketMenuId = this.openTicketMenuId === ticketId ? null : ticketId;
     },
 
+    openTransitionRuleModal(ticketId) {
+      this.selectedTicketId = ticketId;
+      this.showRulesModal = true;
+      this.openTicketMenuId = null;
+    },
 
-    async deleteTicket(ticketId) {
-  const token = localStorage.getItem('accessToken');
-  try {
-    await axios.delete(`http://localhost:5258/api/Tickets/ticket/${ticketId}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    await this.loadColumns(); // обновляем колонки после удаления
-  } catch (error) {
-    console.error('Error deleting ticket:', error);
-  }
-},
-
-
-
-  toggleTicketMenu(ticketId) {
-    this.openTicketMenuId = this.openTicketMenuId === ticketId ? null : ticketId;
-  },
-
-
-  openTransitionRuleModal(ticketId) {
-    this.selectedTicketId = ticketId;
-    this.showRulesModal = true;
-    this.openTicketMenuId = null; // закрываем меню
-  },
-  closeTransitionRuleModal() {
-    this.showRulesModal = false;
-    this.selectedTicketId = null;
-  },
-
+    closeTransitionRuleModal() {
+      this.showRulesModal = false;
+      this.selectedTicketId = null;
+    },
 
     toggleColumnMenu(columnId) {
-    this.openMenuId = this.openMenuId === columnId ? null : columnId;
-  },
+      this.openMenuId = this.openMenuId === columnId ? null : columnId;
+    },
 
+    handleTicketDeleted(ticketId) {
+      for (const column of this.columns) {
+        const index = column.tickets.findIndex(t => t.ticketId === ticketId);
+        if (index !== -1) {
+          // Vue-реактивное обновление
+          this.$set(column, 'tickets', [
+            ...column.tickets.slice(0, index),
+            ...column.tickets.slice(index + 1)
+          ]);
+          break;
+        }
+      }
+    },
 
+    async refreshColumnAfterDelete(ticketId, columnId) {
+      await this.refreshColumn(columnId);
+      this.closeTicketDetailModal();
+    },
 
+    async refreshColumn(columnId) {
+      const token = localStorage.getItem('accessToken');
+      try {
+        const ticketsResponse = await axios.get(
+          `http://localhost:5258/api/Tickets/column/${columnId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-    async refreshColumn() {
-      await this.loadColumns();
-      this.showTicketModal = false;
+        const updatedTickets = Array.isArray(ticketsResponse.data) ? ticketsResponse.data : [];
+
+        const columnIndex = this.columns.findIndex(col => col.columnId === columnId);
+        if (columnIndex !== -1) {
+          this.columns[columnIndex].tickets = updatedTickets;
+        }
+
+        this.showTicketModal = false;
+      } catch (error) {
+        console.error("Error refreshing column:", error);
+      }
+    },
+
+    sortTicketsByDate(column) {
+      if (!column.tickets || column.tickets.length === 0) return;
+
+      column.tickets.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     }
   }
-;
+};
 </script>
+
 
 
 <style scoped>
